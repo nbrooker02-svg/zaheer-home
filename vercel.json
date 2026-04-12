@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/resume-rewrite/:path*",
+      "destination": "https://resume-rewriter-snowy.vercel.app/resume-rewrite/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
