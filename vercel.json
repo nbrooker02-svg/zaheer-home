@@ -5,6 +5,10 @@
       "destination": "https://resume-rewriter-snowy.vercel.app/resume-rewrite/:path*"
     },
     {
+      "source": "/market-read/:path*",
+      "destination": "https://zaheer-market-read.vercel.app/market-read/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

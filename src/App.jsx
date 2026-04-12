@@ -6,6 +6,13 @@ const apps = [
     tag: 'Career',
     status: 'Live',
   },
+  {
+    name: 'Market Read',
+    description: 'Select a market sector and get a full AI-powered weekly breakdown — performance, key developments, stock picks, and what to watch next.',
+    url: '/market-read',
+    tag: 'Finance',
+    status: 'Live',
+  },
 ]
 
 function AppCard({ app }) {
