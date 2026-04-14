@@ -74,15 +74,20 @@ function SectionLabel({ children }) {
   )
 }
 
-function DisabledCTA() {
+// STRIPE_LINK: replace '#' with the real Stripe payment URL when ready to go live
+const STRIPE_LINK = '#'
+
+function BuyCTA() {
   return (
-    <button
-      disabled
-      className="inline-flex items-center text-sm font-semibold px-6 py-3 rounded-lg cursor-default w-fit"
-      style={{ background: 'rgba(255,255,255,0.07)', color: '#C4956A', border: '1px solid rgba(255,255,255,0.08)' }}
+    <a
+      href={STRIPE_LINK}
+      className="inline-flex items-center text-sm font-semibold px-6 py-3 rounded-lg w-fit transition-all duration-200"
+      style={{ background: '#FF5500', color: '#F5EDE6' }}
+      onMouseEnter={e => { e.currentTarget.style.background = '#e04a00' }}
+      onMouseLeave={e => { e.currentTarget.style.background = '#FF5500' }}
     >
-      Launching Soon
-    </button>
+      Buy Now — $97
+    </a>
   )
 }
 
@@ -173,7 +178,7 @@ export default function ShipStack() {
             </div>
             <p className="text-sm mb-6" style={{ color: '#C4956A' }}>One-time purchase. Yours forever.</p>
             <div className="flex flex-col gap-3">
-              <DisabledCTA />
+              <BuyCTA />
               <p className="text-xs" style={{ color: '#C4956A' }}>
                 Built for Claude Code — requires Claude Pro or higher
               </p>
@@ -288,7 +293,7 @@ export default function ShipStack() {
           <p style={{ fontSize: '18px', color: '#F5EDE6', fontFamily: "'Inter', sans-serif" }}>
             $97 — one-time purchase. Yours forever.
           </p>
-          <DisabledCTA />
+          <BuyCTA />
         </div>
       </section>
 

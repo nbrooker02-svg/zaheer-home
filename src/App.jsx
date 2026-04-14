@@ -13,24 +13,6 @@ const packs = [
     buttonLabel: 'View Agent →',
     buttonHref: '/packs/ship-stack',
   },
-  {
-    name: 'Prompt Engineering Pack',
-    type: 'Skill Pack',
-    status: 'Coming Soon',
-    description: 'A collection of battle-tested prompt structures for Claude Code. Drop them into any project and get better output immediately.',
-    price: '—',
-    buttonLabel: 'Coming Soon',
-    buttonHref: null,
-  },
-  {
-    name: 'Research Agent',
-    type: 'Agent',
-    status: 'Coming Soon',
-    description: 'Give it a topic. Get back a structured, sourced breakdown ready to act on. Built for builders who need answers fast.',
-    price: '—',
-    buttonLabel: 'Coming Soon',
-    buttonHref: null,
-  },
 ]
 
 const liveApps = [
@@ -50,12 +32,6 @@ const devApps = [
     tag: 'Finance',
     status: 'Developing',
     description: 'Select a market sector and get a full AI-powered weekly breakdown — performance, key developments, stock picks, and what to watch next.',
-  },
-  {
-    name: 'Cold Email Writer',
-    tag: 'Tools',
-    status: 'Developing',
-    description: 'Describe your offer and your target customer. Get a ready-to-send cold email that doesn\'t sound like a cold email.',
   },
 ]
 

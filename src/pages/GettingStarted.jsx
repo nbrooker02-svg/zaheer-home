@@ -65,10 +65,12 @@ function TroubleItem({ title, children }) {
 
 export default function GettingStarted() {
   const [sessionId, setSessionId] = useState(null)
+  const [checked, setChecked] = useState(false)
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     setSessionId(params.get('session_id'))
+    setChecked(true)
   }, [])
 
   async function handleDownload() {
@@ -91,6 +93,42 @@ export default function GettingStarted() {
     } catch {
       // silently fail — button remains disabled
     }
+  }
+
+  // Show blocked state if page was accessed without a session ID
+  if (checked && !sessionId) {
+    return (
+      <div className="min-h-screen antialiased" style={{ background: '#0e0e0e', color: '#F5EDE6', fontFamily: "'Inter', sans-serif" }}>
+        <Nav />
+        <section
+          className="relative z-10 overflow-hidden"
+          style={{
+            background: 'radial-gradient(ellipse 80% 60% at 50% 0%, #2a0800 0%, #0e0e0e 70%)',
+            paddingTop: '80px',
+            paddingBottom: '80px',
+          }}
+        >
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="max-w-md flex flex-col gap-5">
+              <h1
+                className="text-3xl font-bold"
+                style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#F5EDE6' }}
+              >
+                This page is only accessible after purchase.
+              </h1>
+              <a
+                href="/packs/ship-stack"
+                className="text-sm font-semibold"
+                style={{ color: '#FF5500' }}
+              >
+                ← View Ship Stack
+              </a>
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </div>
+    )
   }
 
   return (
