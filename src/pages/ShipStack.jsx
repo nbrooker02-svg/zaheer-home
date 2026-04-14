@@ -74,8 +74,10 @@ function SectionLabel({ children }) {
   )
 }
 
-// STRIPE_LINK: replace '#' with the real Stripe payment URL when ready to go live
-const STRIPE_LINK = '#'
+// TEST MODE: points to getting started page with a test token so the full download
+// flow can be verified before the real Stripe link is activated.
+// Replace with the real Stripe URL once confirmed working.
+const STRIPE_LINK = '/packs/ship-stack/start?session_id=test_preview_2026'
 
 function BuyCTA() {
   return (

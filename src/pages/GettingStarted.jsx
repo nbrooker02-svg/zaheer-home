@@ -156,18 +156,15 @@ export default function GettingStarted() {
               Follow the steps below. You'll be up and running in under 10 minutes.
             </p>
             <div className="flex flex-col gap-2">
-              {/* Download button — disabled until purchase verification is active */}
               <button
-                disabled
                 onClick={handleDownload}
-                className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-lg cursor-not-allowed w-fit"
-                style={{ background: 'rgba(255,255,255,0.07)', color: '#C4956A', border: '1px solid rgba(255,255,255,0.08)' }}
+                className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-lg w-fit transition-all duration-200"
+                style={{ background: '#FF5500', color: '#F5EDE6' }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#e04a00' }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#FF5500' }}
               >
                 Download Ship Stack
               </button>
-              <p className="text-xs" style={{ color: '#C4956A', opacity: 0.6 }}>
-                Download activates after purchase verification
-              </p>
             </div>
           </div>
         </div>
