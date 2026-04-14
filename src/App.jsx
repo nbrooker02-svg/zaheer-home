@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Nav from './components/Nav.jsx'
+import Footer from './components/Footer.jsx'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -10,7 +12,7 @@ const packs = [
     description: 'Your Claude Code agent for building and shipping web apps. Type your idea — it handles the stack, the build, the deploy, and the launch.',
     price: '$97',
     buttonLabel: 'View Agent →',
-    buttonHref: '#',
+    buttonHref: '/packs/ship-stack',
   },
   {
     name: 'Prompt Engineering Pack',
@@ -217,37 +219,11 @@ export default function App() {
     if (email.trim()) setSubmitted(true)
   }
 
-  function scrollTo(id) {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <div className="min-h-screen antialiased" style={{ background: '#0e0e0e', color: '#F5EDE6', fontFamily: "'Inter', sans-serif" }}>
 
       {/* ── Nav ── */}
-      <header className="relative z-20 px-6 py-4" style={{ borderBottom: '1px solid #2A1A12' }}>
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <img src="/zaheer-logo.png" alt="Zaheer Studios" style={{ height: '36px', width: 'auto' }} />
-          <nav className="flex items-center gap-6">
-            {[
-              { label: 'Packs & Agents', id: 'packs' },
-              { label: 'Apps', id: 'apps' },
-              { label: 'About', id: 'about' },
-            ].map(({ label, id }) => (
-              <button
-                key={id}
-                onClick={() => scrollTo(id)}
-                className="text-sm font-medium transition-colors duration-150 bg-transparent border-0 cursor-pointer"
-                style={{ color: '#C4956A' }}
-                onMouseEnter={e => { e.currentTarget.style.color = '#F5EDE6' }}
-                onMouseLeave={e => { e.currentTarget.style.color = '#C4956A' }}
-              >
-                {label}
-              </button>
-            ))}
-          </nav>
-        </div>
-      </header>
+      <Nav />
 
       {/* ── Hero ── */}
       <section
@@ -367,12 +343,7 @@ export default function App() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="relative z-10 px-6 py-8" style={{ borderTop: '1px solid #2A1A12' }}>
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <span className="text-sm" style={{ color: '#C4956A' }}>Zaheer Studios</span>
-          <span className="text-sm" style={{ color: '#C4956A' }}>© 2026</span>
-        </div>
-      </footer>
+      <Footer />
 
     </div>
   )
