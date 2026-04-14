@@ -118,12 +118,12 @@ export default function GettingStarted() {
               Follow the steps below. You'll be up and running in under 10 minutes.
             </p>
             <div className="flex flex-col gap-2">
-              {/* Download button — disabled until purchase verification is wired live */}
+              {/* Download button — disabled until purchase verification is active */}
               <button
                 disabled
                 onClick={handleDownload}
                 className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-lg cursor-not-allowed w-fit"
-                style={{ background: 'rgba(255,255,255,0.07)', color: '#C4956A' }}
+                style={{ background: 'rgba(255,255,255,0.07)', color: '#C4956A', border: '1px solid rgba(255,255,255,0.08)' }}
               >
                 Download Ship Stack
               </button>
@@ -138,17 +138,11 @@ export default function GettingStarted() {
       {/* ── Before You Begin ── */}
       <section className="relative z-10 max-w-5xl mx-auto px-6 py-20">
         <SectionLabel>Before You Begin</SectionLabel>
-        <p className="text-base mb-8" style={{ color: '#C4956A' }}>Make sure you have these ready before starting.</p>
+        <p className="text-base mb-8" style={{ color: '#C4956A' }}>Make sure you have these ready.</p>
         <ul className="flex flex-col gap-4 max-w-lg">
-          <CheckItem>
-            Claude Code installed — download at claude.ai/code
-          </CheckItem>
-          <CheckItem>
-            An active Claude Pro subscription or higher — claude.com/pricing
-          </CheckItem>
-          <CheckItem>
-            VS Code installed (recommended) — code.visualstudio.com
-          </CheckItem>
+          <CheckItem>Claude Code installed — claude.ai/code</CheckItem>
+          <CheckItem>Active Claude Pro subscription or higher — claude.com/pricing</CheckItem>
+          <CheckItem>VS Code installed (recommended) — code.visualstudio.com</CheckItem>
         </ul>
       </section>
 
@@ -159,18 +153,18 @@ export default function GettingStarted() {
           className="inline-block text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full mb-8"
           style={{ color: '#FF5500', background: 'rgba(255,85,0,0.1)', border: '1px solid rgba(255,85,0,0.2)' }}
         >
-          Recommended for beginners
+          Recommended
         </span>
         <ol className="flex flex-col gap-5 max-w-xl">
-          <Step n={1}>Download the ZIP file above and unzip it — you'll get a folder called "Ship Stack - AI App Builder Agent"</Step>
+          <Step n={1}>Download the ZIP above and unzip it — you'll get a folder called "Ship Stack - AI App Builder Agent"</Step>
           <Step n={2}>Open VS Code</Step>
           <Step n={3}>Click <strong style={{ color: '#F5EDE6' }}>File</strong> in the top menu — click <strong style={{ color: '#F5EDE6' }}>Open Folder</strong></Step>
           <Step n={4}>Find and select the "Ship Stack - AI App Builder Agent" folder — click <strong style={{ color: '#F5EDE6' }}>Open</strong></Step>
           <Step n={5}>Open a new terminal: click <strong style={{ color: '#F5EDE6' }}>Terminal</strong> in the top menu — <strong style={{ color: '#F5EDE6' }}>New Terminal</strong></Step>
           <Step n={6}>In the terminal, type <Code>claude</Code> and press Enter</Step>
-          <Step n={7}>A prompt will appear asking "Do you trust this folder?" — click <strong style={{ color: '#F5EDE6' }}>Yes, I trust this folder</strong></Step>
-          <Step n={8}>Type <Code>Begin</Code> in the terminal and press Enter</Step>
-          <Step n={9}>Your agent will introduce itself and walk you through the rest — this takes about 10 minutes and only happens once</Step>
+          <Step n={7}>A prompt will appear: "Do you trust this folder?" — click <strong style={{ color: '#F5EDE6' }}>Yes, I trust this folder</strong></Step>
+          <Step n={8}>Type <Code>Begin</Code> and press Enter</Step>
+          <Step n={9}>Your agent introduces itself and walks you through onboarding — takes about 10 minutes and only happens once</Step>
         </ol>
       </section>
 
@@ -178,12 +172,12 @@ export default function GettingStarted() {
       <section className="relative z-10 max-w-5xl mx-auto px-6 py-20" style={{ borderTop: '1px solid #2A1A12' }}>
         <SectionLabel>Option B — Mac Terminal</SectionLabel>
         <ol className="flex flex-col gap-5 max-w-xl">
-          <Step n={1}>Download the ZIP file above and unzip it</Step>
+          <Step n={1}>Download the ZIP above and unzip it</Step>
           <Step n={2}>Open Terminal — press Cmd+Space, type Terminal, press Enter</Step>
-          <Step n={3}>Type <Code>cd </Code> with a space after it, then drag the unzipped folder into the terminal window — the path fills in automatically. Press Enter.</Step>
+          <Step n={3}>Type <Code>cd </Code> with a space after, then drag the unzipped folder into the terminal window — the path fills in automatically. Press Enter.</Step>
           <Step n={4}>Type <Code>claude</Code> and press Enter</Step>
           <Step n={5}>Type <Code>Begin</Code> and press Enter</Step>
-          <Step n={6}>Your agent will introduce itself and walk you through the rest</Step>
+          <Step n={6}>Your agent introduces itself and walks you through the rest</Step>
         </ol>
       </section>
 
@@ -191,12 +185,12 @@ export default function GettingStarted() {
       <section className="relative z-10 max-w-5xl mx-auto px-6 py-20" style={{ borderTop: '1px solid #2A1A12' }}>
         <SectionLabel>Option C — Windows</SectionLabel>
         <ol className="flex flex-col gap-5 max-w-xl">
-          <Step n={1}>Download the ZIP file above and unzip it</Step>
+          <Step n={1}>Download the ZIP above and unzip it</Step>
           <Step n={2}>Open the unzipped folder in File Explorer</Step>
-          <Step n={3}>Click the address bar at the top of the window, type <Code>cmd</Code>, press Enter — a terminal opens pointed at that folder</Step>
+          <Step n={3}>Click the address bar at the top, type <Code>cmd</Code>, press Enter — a terminal opens pointed at that folder</Step>
           <Step n={4}>Type <Code>claude</Code> and press Enter</Step>
           <Step n={5}>Type <Code>Begin</Code> and press Enter</Step>
-          <Step n={6}>Your agent will introduce itself and walk you through the rest</Step>
+          <Step n={6}>Your agent introduces itself and walks you through the rest</Step>
         </ol>
       </section>
 
@@ -204,7 +198,7 @@ export default function GettingStarted() {
       <section className="relative z-10 max-w-5xl mx-auto px-6 py-20" style={{ borderTop: '1px solid #2A1A12' }}>
         <SectionLabel>What to Expect</SectionLabel>
         <p className="text-base leading-relaxed max-w-2xl" style={{ color: '#C4956A' }}>
-          When you type Begin your agent will introduce itself and ask you a series of questions — your name, your tools, your experience level, and what you want to build first. This onboarding takes about 10 minutes and only happens once. After that your agent remembers everything and you never have to explain yourself again. Your first build prompt can be as simple as: I want to build a cover letter generator.
+          When you type Begin your agent introduces itself and asks a series of questions — your name, your tools, your experience level, and what you want to build first. This onboarding takes about 10 minutes and only happens once. After that your agent remembers everything. Your first build prompt can be as simple as: I want to build a cover letter generator.
         </p>
       </section>
 
@@ -213,16 +207,16 @@ export default function GettingStarted() {
         <SectionLabel>Something Not Working?</SectionLabel>
         <ul className="flex flex-col gap-6 max-w-2xl">
           <TroubleItem title={<><Code>claude</Code> command not found</>}>
-            Claude Code is not installed. Go to claude.ai/code and follow the setup instructions.
+            Claude Code is not installed. Go to claude.ai/code
           </TroubleItem>
           <TroubleItem title='"Permission denied" on Mac'>
-            Try typing <Code>sudo claude</Code> instead
+            Type <Code>sudo claude</Code> instead
           </TroubleItem>
           <TroubleItem title="Agent not reading your files">
-            Make sure you opened the folder itself in VS Code, not a file inside it
+            Make sure you opened the folder itself, not a file inside it
           </TroubleItem>
           <TroubleItem title="Agent skipping onboarding">
-            Open CLAUDE.md and check that your name still shows as [YOUR_NAME] in brackets. If it does, type Begin again.
+            Open CLAUDE.md and check that your name still shows as [YOUR_NAME] in brackets. If so, type Begin again.
           </TroubleItem>
         </ul>
       </section>

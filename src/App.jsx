@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Nav from './components/Nav.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -211,14 +210,6 @@ function SectionLabel({ children }) {
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-
-  function handleNotify(e) {
-    e.preventDefault()
-    if (email.trim()) setSubmitted(true)
-  }
-
   return (
     <div className="min-h-screen antialiased" style={{ background: '#0e0e0e', color: '#F5EDE6', fontFamily: "'Inter', sans-serif" }}>
 
@@ -238,14 +229,14 @@ export default function App() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="max-w-2xl">
             <span
-              className="inline-block text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full mb-6"
+              className="inline-block text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full"
               style={{ color: '#FF5500', background: 'rgba(255,85,0,0.1)', border: '1px solid rgba(255,85,0,0.2)' }}
             >
               AI Solutions Studio
             </span>
             <h1
               className="text-5xl sm:text-6xl font-bold leading-tight tracking-tight mb-6"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#F5EDE6' }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#F5EDE6', marginTop: '12px' }}
             >
               Simple tools.<br />Serious results.
             </h1>
@@ -266,42 +257,6 @@ export default function App() {
           {packs.map(p => <PackCard key={p.name} pack={p} />)}
         </div>
 
-        {/* Email capture */}
-        <div className="mt-12 rounded-xl border px-6 py-8" style={{ borderColor: '#2A1A12', background: '#161616' }}>
-          <p className="text-sm font-medium mb-4" style={{ color: '#C4956A' }}>
-            More packs and agents dropping soon.
-          </p>
-          {submitted ? (
-            <p className="text-sm font-semibold" style={{ color: '#FF5500' }}>You're on the list.</p>
-          ) : (
-            <form onSubmit={handleNotify} className="flex gap-3 flex-wrap">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                className="flex-1 min-w-0 text-sm rounded-lg px-4 py-2.5 outline-none transition-all"
-                style={{
-                  background: '#0e0e0e',
-                  border: '1px solid #2A1A12',
-                  color: '#F5EDE6',
-                }}
-                onFocus={e => { e.currentTarget.style.borderColor = 'rgba(255,85,0,0.4)' }}
-                onBlur={e => { e.currentTarget.style.borderColor = '#2A1A12' }}
-              />
-              <button
-                type="submit"
-                className="text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 whitespace-nowrap"
-                style={{ background: '#FF5500', color: '#F5EDE6' }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#e04a00' }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#FF5500' }}
-              >
-                Notify Me
-              </button>
-            </form>
-          )}
-        </div>
       </section>
 
       {/* ── Apps ── */}

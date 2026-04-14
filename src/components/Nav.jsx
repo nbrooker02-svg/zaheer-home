@@ -16,8 +16,11 @@ export default function Nav() {
   return (
     <header className="relative z-20 px-6 py-4" style={{ borderBottom: '1px solid #2A1A12' }}>
       <div className="max-w-5xl mx-auto flex items-center justify-between">
-        <a href="/" style={{ lineHeight: 0 }}>
-          <img src="/no-back-zaheer-logo.png" alt="Zaheer Studios" style={{ height: '36px', width: 'auto' }} />
+        <a href="/" className="flex items-center gap-3" style={{ textDecoration: 'none' }}>
+          <img src="/no-back-zaheer-logo.png" alt="Zaheer Studios" style={{ height: '72px', width: 'auto' }} />
+          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800, fontSize: '18px', color: '#F5EDE6', lineHeight: 1 }}>
+            Zaheer Studios
+          </span>
         </a>
         <nav className="flex items-center gap-6">
           {[
