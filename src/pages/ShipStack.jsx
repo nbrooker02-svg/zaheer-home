@@ -74,10 +74,7 @@ function SectionLabel({ children }) {
   )
 }
 
-// TEST MODE: points to getting started page with a test token so the full download
-// flow can be verified before the real Stripe link is activated.
-// Replace with the real Stripe URL once confirmed working.
-const STRIPE_LINK = '/packs/ship-stack/start?session_id=test_preview_2026'
+const STRIPE_LINK = 'https://buy.stripe.com/fZufZh0VQ3kidOs6Oq4c801'
 
 function BuyCTA() {
   return (
