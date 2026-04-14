@@ -9,37 +9,51 @@ const apps = [
   {
     name: 'Market Read',
     description: 'Select a market sector and get a full AI-powered weekly breakdown — performance, key developments, stock picks, and what to watch next.',
-    url: '/market-read',
+    url: null,
     tag: 'Finance',
-    status: 'Live',
+    status: 'Developing',
   },
 ]
 
 function AppCard({ app }) {
-  return (
-    <a
-      href={app.url}
-      className="group relative block rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-indigo-500/50 hover:bg-white/8 transition-all duration-300"
-    >
+  const isLive = app.status === 'Live'
+
+  const cardClass = `group relative block rounded-2xl border p-6 transition-all duration-300 ${
+    isLive
+      ? 'border-white/10 bg-white/5 hover:border-indigo-500/50 hover:bg-white/8 cursor-pointer'
+      : 'border-white/5 bg-white/3 cursor-default opacity-60'
+  }`
+
+  const statusClass = isLive
+    ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20'
+    : 'bg-amber-500/15 text-amber-400 border-amber-500/20'
+
+  const inner = (
+    <>
       <div className="flex items-start justify-between mb-4">
         <span className="text-xs font-semibold tracking-widest uppercase text-indigo-400">
           {app.tag}
         </span>
-        <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/20">
+        <span className={`text-xs font-medium px-2 py-0.5 rounded-full border ${statusClass}`}>
           {app.status}
         </span>
       </div>
-      <h3 className="text-lg font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">
+      <h3 className={`text-lg font-bold text-white mb-2 ${isLive ? 'group-hover:text-indigo-300' : ''} transition-colors`}>
         {app.name}
       </h3>
       <p className="text-sm text-slate-400 leading-relaxed mb-5">
         {app.description}
       </p>
-      <span className="text-sm font-semibold text-indigo-400 group-hover:text-indigo-300 transition-colors">
-        Open app →
-      </span>
-    </a>
+      {isLive && (
+        <span className="text-sm font-semibold text-indigo-400 group-hover:text-indigo-300 transition-colors">
+          Open app →
+        </span>
+      )}
+    </>
   )
+
+  if (!isLive) return <div className={cardClass}>{inner}</div>
+  return <a href={app.url} className={cardClass}>{inner}</a>
 }
 
 export default function App() {
