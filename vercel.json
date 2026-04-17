@@ -5,6 +5,8 @@
     { "source": "/resume-rewrite/:path*", "destination": "https://resume-rewriter-snowy.vercel.app/resume-rewrite/:path*" },
     { "source": "/market-read", "destination": "https://zaheer-market-read.vercel.app/market-read" },
     { "source": "/market-read/:path*", "destination": "https://zaheer-market-read.vercel.app/market-read/:path*" },
+    { "source": "/permitpilot", "destination": "https://permitpilot-topaz.vercel.app" },
+    { "source": "/permitpilot/:path*", "destination": "https://permitpilot-topaz.vercel.app/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

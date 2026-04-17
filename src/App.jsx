@@ -24,16 +24,25 @@ const liveApps = [
     buttonLabel: 'Open App →',
     href: '/resume-rewrite',
   },
-]
-
-const devApps = [
   {
     name: 'Market Read',
     tag: 'Finance',
-    status: 'Developing',
+    status: 'Live',
     description: 'Select a market sector and get a full AI-powered weekly breakdown — performance, key developments, stock picks, and what to watch next.',
+    buttonLabel: 'Open App →',
+    href: '/market-read',
+  },
+  {
+    name: 'PermitPilot',
+    tag: 'Construction',
+    status: 'Live',
+    description: 'Jurisdiction-specific building permit checklists for contractors. Stop guessing what documents you need — get a plain-English checklist before you submit.',
+    buttonLabel: 'Open App →',
+    href: '/permitpilot',
   },
 ]
+
+const devApps = []
 
 // ─── Components ───────────────────────────────────────────────────────────────
 
