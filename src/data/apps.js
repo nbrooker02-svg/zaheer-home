@@ -12,10 +12,10 @@ export const apps = [
     id: 'market-read',
     name: 'Market Read',
     category: 'Finance',
-    status: 'live',
+    status: 'development',
     description: 'Select a market sector and get a full AI-powered weekly breakdown -- performance, key developments, stock picks, and what to watch next.',
-    price: 'Free',
-    href: '/apps/market-read',
+    price: 'Coming soon',
+    href: null,
   },
   {
     id: 'permitpilot',
