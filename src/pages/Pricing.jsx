@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useAuth } from '../contexts/AuthContext'
 
 const faqs = [
   {
@@ -50,6 +51,28 @@ function FAQItem({ faq }) {
 }
 
 export default function Pricing() {
+  const { user } = useAuth()
+  const navigate = useNavigate()
+  const [loadingPlan, setLoadingPlan] = useState(null)
+
+  async function handleSubscribe(plan) {
+    if (!user) { navigate('/studio/auth'); return }
+    setLoadingPlan(plan)
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productKey: plan, userId: user.id, cancelPath: '/pricing' }),
+      })
+      const { url, error } = await res.json()
+      if (url) window.location.href = url
+      else alert(error || 'Something went wrong.')
+    } catch {
+      alert('Something went wrong. Try again.')
+    }
+    setLoadingPlan(null)
+  }
+
   return (
     <>
       {/* Header — RED */}
@@ -167,9 +190,23 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <button className="btn-white mt-auto">
-                Start Subscription &rarr;
-              </button>
+              <div className="flex flex-col gap-2 mt-auto">
+                <button
+                  className="btn-white"
+                  onClick={() => handleSubscribe('all-access-monthly')}
+                  disabled={!!loadingPlan}
+                >
+                  {loadingPlan === 'all-access-monthly' ? 'Loading...' : 'Start Monthly →'}
+                </button>
+                <button
+                  className="text-sm font-semibold py-2"
+                  style={{ color: 'rgba(255,255,255,0.75)', background: 'none', border: 'none', cursor: 'pointer' }}
+                  onClick={() => handleSubscribe('all-access-yearly')}
+                  disabled={!!loadingPlan}
+                >
+                  {loadingPlan === 'all-access-yearly' ? 'Loading...' : 'Or pay yearly ($149) →'}
+                </button>
+              </div>
             </div>
 
           </div>

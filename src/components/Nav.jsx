@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 
 const links = [
   { label: 'Apps', href: '/apps' },
@@ -11,6 +12,7 @@ const links = [
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const location = useLocation()
+  const { user } = useAuth()
 
   const isActive = (href) => {
     if (href === '/studio/browse') return location.pathname.startsWith('/studio')
@@ -65,9 +67,23 @@ export default function Nav() {
             </Link>
           ))}
           <div className="w-px h-4 mx-3" style={{ background: 'var(--border)' }} />
-          <Link to="/studio/browse" className="btn-primary" style={{ padding: '8px 18px', fontSize: '0.85rem' }}>
-            Browse Studio
-          </Link>
+          {user ? (
+            <Link
+              to="/studio/library"
+              className="btn-primary"
+              style={{ padding: '8px 18px', fontSize: '0.85rem' }}
+            >
+              My Library
+            </Link>
+          ) : (
+            <Link
+              to="/studio/auth"
+              className="btn-primary"
+              style={{ padding: '8px 18px', fontSize: '0.85rem' }}
+            >
+              Sign in
+            </Link>
+          )}
         </nav>
 
         {/* Mobile hamburger */}
@@ -108,13 +124,25 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <Link
-            to="/studio/browse"
-            className="btn-primary mt-3 text-center"
-            onClick={() => setOpen(false)}
-          >
-            Browse Studio
-          </Link>
+          <div className="mt-3">
+            {user ? (
+              <Link
+                to="/studio/library"
+                className="btn-primary text-center block"
+                onClick={() => setOpen(false)}
+              >
+                My Library
+              </Link>
+            ) : (
+              <Link
+                to="/studio/auth"
+                className="btn-primary text-center block"
+                onClick={() => setOpen(false)}
+              >
+                Sign in
+              </Link>
+            )}
+          </div>
         </div>
       )}
     </header>

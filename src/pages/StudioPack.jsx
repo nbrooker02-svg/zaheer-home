@@ -1,7 +1,8 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import { packs } from '../data/packs'
 import TerminalMockup from '../components/TerminalMockup'
+import { useAuth } from '../contexts/AuthContext'
 
 function FAQItem({ faq }) {
   const [open, setOpen] = useState(false)
@@ -30,7 +31,32 @@ function FAQItem({ faq }) {
 
 export default function StudioPack() {
   const { packId } = useParams()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { user } = useAuth()
+  const [buyLoading, setBuyLoading] = useState(false)
   const pack = packs.find(p => p.id === packId)
+
+  async function handleBuy() {
+    if (!user) {
+      navigate('/studio/auth')
+      return
+    }
+    setBuyLoading(true)
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productKey: pack.id, userId: user.id, cancelPath: location.pathname }),
+      })
+      const { url, error } = await res.json()
+      if (url) window.location.href = url
+      else alert(error || 'Something went wrong.')
+    } catch {
+      alert('Something went wrong. Try again.')
+    }
+    setBuyLoading(false)
+  }
 
   if (!pack) {
     return (
@@ -91,8 +117,8 @@ export default function StudioPack() {
                 <span className="text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>{pack.priceNote}</span>
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
-                <button className="btn-white">
-                  Buy {pack.price} &rarr;
+                <button className="btn-white" onClick={handleBuy} disabled={buyLoading}>
+                  {buyLoading ? 'Loading...' : `Buy ${pack.price} →`}
                 </button>
                 <Link to="/pricing" className="btn-secondary" style={{ borderColor: 'rgba(255,255,255,0.3)', color: '#FFFFFF' }}>
                   Or get all packs &rarr;
@@ -215,7 +241,9 @@ export default function StudioPack() {
               <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
                 Lifetime access. Free minor updates. Yours to keep.
               </p>
-              <button className="btn-primary mt-auto">Buy {pack.price} &rarr;</button>
+              <button className="btn-primary mt-auto" onClick={handleBuy} disabled={buyLoading}>
+                {buyLoading ? 'Loading...' : `Buy ${pack.price} →`}
+              </button>
             </div>
             <div className="card flex flex-col gap-4" style={{ borderColor: 'var(--accent)', borderWidth: '2px' }}>
               <div className="flex items-center gap-2">
