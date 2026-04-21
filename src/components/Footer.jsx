@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 
 const products = [
   { label: 'Apps', href: '/apps', internal: true },
-  { label: 'Studio', href: '/studio/browse', internal: false },
-  { label: 'Pricing', href: '/pricing', internal: false },
+  { label: 'Studio', href: '/studio/browse', internal: true },
+  { label: 'Pricing', href: '/pricing', internal: true },
   { label: 'Free Starter Kit', href: '/studio/free-starter-kit', internal: false },
 ]
 
@@ -16,55 +16,40 @@ const company = [
 ]
 
 function FooterLink({ item }) {
-  const style = { color: 'var(--text-secondary)', fontSize: '0.875rem', transition: 'color 150ms' }
+  const style = { color: 'rgba(237,239,238,0.55)', fontSize: '0.875rem', transition: 'color 150ms' }
   const handlers = {
-    onMouseEnter: e => { e.currentTarget.style.color = 'var(--text-primary)' },
-    onMouseLeave: e => { e.currentTarget.style.color = 'var(--text-secondary)' },
+    onMouseEnter: e => { e.currentTarget.style.color = '#EDEFEE' },
+    onMouseLeave: e => { e.currentTarget.style.color = 'rgba(237,239,238,0.55)' },
   }
-
   if (item.internal) {
-    return (
-      <Link to={item.href} style={style} {...handlers}>
-        {item.label}
-      </Link>
-    )
+    return <Link to={item.href} style={style} {...handlers}>{item.label}</Link>
   }
-  return (
-    <a href={item.href} style={style} {...handlers}>
-      {item.label}
-    </a>
-  )
+  return <a href={item.href} style={style} {...handlers}>{item.label}</a>
 }
 
 export default function Footer() {
   return (
-    <footer
-      className="px-6 py-16"
-      style={{ borderTop: '1px solid var(--border)', background: 'var(--bg-surface)' }}
-    >
+    <footer className="px-6 py-16" style={{ background: 'var(--bg-dark)' }}>
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <Link to="/" className="flex items-center gap-2">
-              <span style={{ fontFamily: "'Instrument Serif', serif", fontSize: '1.1rem', color: 'var(--accent)' }}>
-                &#9679;
+            <Link to="/" className="flex items-center gap-2.5">
+              <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 800, fontSize: '1.05rem', color: 'var(--accent)' }}>
+                Z
               </span>
-              <span style={{ fontFamily: "'Instrument Serif', serif", fontSize: '1.1rem', color: 'var(--text-primary)' }}>
+              <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: '0.95rem', color: '#EDEFEE' }}>
                 Zaheer Studio
               </span>
             </Link>
-            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', maxWidth: '240px' }}>
+            <p className="text-sm leading-relaxed" style={{ color: 'rgba(237,239,238,0.5)', maxWidth: '240px' }}>
               The AI toolkit for people who build things solo.
             </p>
           </div>
 
           {/* Products */}
           <div className="flex flex-col gap-4">
-            <p
-              className="text-xs font-semibold tracking-widest uppercase"
-              style={{ color: 'var(--text-tertiary)' }}
-            >
+            <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'rgba(237,239,238,0.3)' }}>
               Products
             </p>
             <nav className="flex flex-col gap-2.5">
@@ -74,10 +59,7 @@ export default function Footer() {
 
           {/* Company */}
           <div className="flex flex-col gap-4">
-            <p
-              className="text-xs font-semibold tracking-widest uppercase"
-              style={{ color: 'var(--text-tertiary)' }}
-            >
+            <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'rgba(237,239,238,0.3)' }}>
               Company
             </p>
             <nav className="flex flex-col gap-2.5">
@@ -88,9 +70,9 @@ export default function Footer() {
 
         <div
           className="mt-12 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
-          style={{ borderTop: '1px solid var(--border)' }}
+          style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
         >
-          <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
+          <p className="text-sm" style={{ color: 'rgba(237,239,238,0.3)' }}>
             &copy; 2026 Zaheer Studio. All rights reserved.
           </p>
         </div>

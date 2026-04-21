@@ -3,13 +3,19 @@ import { Link, useLocation } from 'react-router-dom'
 
 const links = [
   { label: 'Apps', href: '/apps' },
+  { label: 'Studio', href: '/studio/browse' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
 ]
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const location = useLocation()
+
+  const isActive = (href) => {
+    if (href === '/studio/browse') return location.pathname.startsWith('/studio')
+    return location.pathname.startsWith(href)
+  }
 
   return (
     <header
@@ -18,11 +24,27 @@ export default function Nav() {
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <span style={{ fontFamily: "'Instrument Serif', serif", fontSize: '1.25rem', color: 'var(--accent)' }}>
-            &#9679;
+        <Link to="/" className="flex items-center gap-2.5">
+          <span
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 800,
+              fontSize: '1.1rem',
+              color: 'var(--accent)',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Z
           </span>
-          <span style={{ fontFamily: "'Instrument Serif', serif", fontSize: '1.2rem', color: 'var(--text-primary)', fontWeight: 400 }}>
+          <span
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 700,
+              fontSize: '1rem',
+              color: 'var(--text-primary)',
+              letterSpacing: '-0.01em',
+            }}
+          >
             Zaheer Studio
           </span>
         </Link>
@@ -33,16 +55,19 @@ export default function Nav() {
             <Link
               key={link.href}
               to={link.href}
-              className="btn-ghost"
-              style={{ color: location.pathname.startsWith(link.href) ? 'var(--text-primary)' : 'var(--text-secondary)' }}
+              className="btn-ghost text-sm"
+              style={{
+                color: isActive(link.href) ? 'var(--text-primary)' : 'var(--text-secondary)',
+                fontWeight: isActive(link.href) ? 500 : 400,
+              }}
             >
               {link.label}
             </Link>
           ))}
           <div className="w-px h-4 mx-3" style={{ background: 'var(--border)' }} />
-          <a href="/studio/browse" className="btn-primary" style={{ padding: '8px 18px' }}>
+          <Link to="/studio/browse" className="btn-primary" style={{ padding: '8px 18px', fontSize: '0.85rem' }}>
             Browse Studio
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile hamburger */}
@@ -83,13 +108,13 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <a
-            href="/studio/browse"
+          <Link
+            to="/studio/browse"
             className="btn-primary mt-3 text-center"
             onClick={() => setOpen(false)}
           >
             Browse Studio
-          </a>
+          </Link>
         </div>
       )}
     </header>
