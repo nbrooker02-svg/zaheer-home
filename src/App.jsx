@@ -27,8 +27,8 @@ const reasons = [
     body: 'Every pack is tested in real work before it ships. No bloat. No filler.',
   },
   {
-    title: 'Updated monthly',
-    body: 'Subscribe once, get every future pack and update automatically.',
+    title: 'Built to improve over time',
+    body: 'Subscribe once, get every future pack we ship — automatically.',
   },
   {
     title: 'Your data, your machine',
@@ -173,7 +173,7 @@ export default function Home() {
           </div>
           <div className="mt-10 pt-10 flex items-center justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
             <p className="text-sm" style={{ color: 'rgba(237,239,238,0.4)' }}>
-              More packs shipping monthly.
+              More packs shipping.
             </p>
             <Link to="/studio/browse" className="text-sm font-semibold" style={{ color: 'var(--warm)' }}>
               See all packs &rarr;
@@ -270,8 +270,8 @@ export default function Home() {
                 Live apps. No install.
               </h2>
               <p className="text-base leading-relaxed mb-8" style={{ color: 'var(--text-secondary)', maxWidth: '400px' }}>
-                While you're here — we also build AI-powered web apps you can use right in your browser.
-                No Claude Code required.
+                Beyond the studio, we build and ship standalone apps — web, mobile, and more.
+                A look at what else we're working on.
               </p>
               <Link to="/apps" className="btn-secondary">Browse all apps &rarr;</Link>
             </div>

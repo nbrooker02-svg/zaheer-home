@@ -227,7 +227,7 @@ export default function StudioPack() {
                 <span className="text-sm" style={{ color: 'var(--text-tertiary)' }}>/ month</span>
               </div>
               <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                Every current pack. Every future pack. Monthly updates.
+                Every current pack. Every future pack. Updates included.
               </p>
               <Link to="/pricing" className="btn-primary mt-auto">Start all-access &rarr;</Link>
             </div>

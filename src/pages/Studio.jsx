@@ -145,7 +145,7 @@ export default function Studio() {
               Real Estate, Finance, Design, Sales, and more.
             </h2>
             <p className="text-sm mt-3" style={{ color: 'rgba(237,239,238,0.5)', maxWidth: '420px' }}>
-              New packs ship monthly. Subscribe to get every new pack automatically.
+              New packs ship as they're ready. Subscribe to get every new pack automatically.
             </p>
           </div>
           <Link to="/pricing" className="btn-primary" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>

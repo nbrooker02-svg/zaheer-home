@@ -15,8 +15,8 @@ const faqs = [
     a: "Yes. Email hello@zaheer.studio and we'll apply a credit toward your subscription.",
   },
   {
-    q: "How often do new packs ship?",
-    a: "Monthly. Subscribers get them automatically. One-time buyers can purchase new packs individually.",
+    q: "When do new packs ship?",
+    a: "New packs ship as they're ready. Subscribers get them automatically. One-time buyers can purchase new packs individually.",
   },
   {
     q: "What payment methods do you accept?",
@@ -118,7 +118,7 @@ export default function Pricing() {
                 Buy what you need. Keep it forever.
               </p>
               <ul className="flex flex-col gap-3">
-                {['Any single pack of your choice', 'Lifetime access to current version', 'Free minor updates', 'Email support'].map(item => (
+                {['Any single pack of your choice', 'Lifetime access to current version', 'Free updates included', 'Email support'].map(item => (
                   <li key={item} className="flex gap-2.5 items-start text-sm" style={{ color: 'var(--text-secondary)' }}>
                     <span style={{ color: 'var(--warm)', flexShrink: 0, marginTop: '1px' }}>&#10003;</span>
                     {item}
@@ -157,7 +157,7 @@ export default function Pricing() {
                 {[
                   'Every current pack',
                   'Every future pack we build',
-                  'Monthly updates to all packs',
+                  'Updates to all packs included',
                   'Priority support',
                   'Community access',
                 ].map(item => (

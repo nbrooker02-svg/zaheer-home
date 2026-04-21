@@ -56,21 +56,20 @@ export default function Apps() {
     <>
       <section
         className="px-6"
-        style={{ paddingTop: '80px', paddingBottom: '64px', borderBottom: '1px solid var(--border)' }}
+        style={{ paddingTop: '80px', paddingBottom: '64px', background: '#3D2B1F', borderBottom: '1px solid rgba(255,255,255,0.08)' }}
       >
         <div className="max-w-6xl mx-auto">
-          <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--accent)' }}>
-            Web Apps
+          <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'rgba(208,136,86,0.8)' }}>
+            Apps
           </span>
           <h1
             className="font-serif font-bold mt-3"
-            style={{ fontSize: 'clamp(2.25rem, 4vw, 3.25rem)', lineHeight: 1.1, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}
+            style={{ fontSize: 'clamp(2.25rem, 4vw, 3.25rem)', lineHeight: 1.1, letterSpacing: '-0.02em', color: '#EDEFEE' }}
           >
-            AI tools that work in your browser.
+            Things we've built and shipped.
           </h1>
-          <p className="text-lg mt-4" style={{ color: 'var(--text-secondary)', maxWidth: '520px', lineHeight: 1.65 }}>
-            Purpose-built for one job. No setup, no accounts unless the app needs them.
-            Pay once, use forever.
+          <p className="text-lg mt-4" style={{ color: 'rgba(237,239,238,0.65)', maxWidth: '520px', lineHeight: 1.65 }}>
+            Standalone apps — web, mobile, and more. Each one built to solve a specific problem for a specific person.
           </p>
         </div>
       </section>
