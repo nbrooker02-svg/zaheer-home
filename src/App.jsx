@@ -127,50 +127,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Two Paths ── */}
-      <section className="px-6 py-24" style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="card flex flex-col gap-5" style={{ padding: '40px' }}>
-              <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--accent)' }}>
-                Live Web Apps
-              </span>
-              <h2
-                className="font-serif font-bold"
-                style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.25rem)', lineHeight: 1.2, color: 'var(--text-primary)' }}
-              >
-                Use them right in your browser.
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                Purpose-built AI tools that solve one problem exactly.
-                Resume rewriting, market research, content generation.
-                Pay once, use forever.
-              </p>
-              <Link to="/apps" className="text-sm font-semibold mt-auto" style={{ color: 'var(--accent)' }}>
-                See all apps &rarr;
-              </Link>
-            </div>
-
-            <div className="card flex flex-col gap-5" style={{ padding: '40px' }}>
-              <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--accent)' }}>
-                Agents &amp; Skills
-              </span>
-              <h2
-                className="font-serif font-bold"
-                style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.25rem)', lineHeight: 1.2, color: 'var(--text-primary)' }}
-              >
-                Download, install, own.
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                Pre-configured Claude Code agents for specific professions.
-                Run locally. Your data stays with you. Works offline.
-                Updates monthly if you subscribe.
-              </p>
-              <Link to="/studio/browse" className="text-sm font-semibold mt-auto" style={{ color: 'var(--accent)' }}>
-                Browse Studio &rarr;
-              </Link>
-            </div>
-          </div>
+      {/* ── Also building: apps strip ── */}
+      <section className="px-6 py-5" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+          <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--text-tertiary)' }}>
+            Also
+          </span>
+          <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+            We build live AI web apps too — resume rewriting, market research, and more. Use them right in your browser, no install required.
+          </p>
+          <Link to="/apps" className="text-sm font-semibold whitespace-nowrap" style={{ color: 'var(--accent)' }}>
+            Browse apps &rarr;
+          </Link>
         </div>
       </section>
 
