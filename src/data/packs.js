@@ -1,0 +1,32 @@
+export const packs = [
+  {
+    id: 'ship-stack',
+    name: 'Ship Stack',
+    category: 'Building',
+    status: 'live',
+    description: 'Your Claude Code agent for building and shipping web apps. Type your idea -- it handles the stack, the build, the deploy, and the launch.',
+    price: '$97',
+    href: '/studio/ship-stack',
+    featured: true,
+  },
+  {
+    id: 'marketing-agent',
+    name: 'One-Person Marketing Agent',
+    category: 'Marketing',
+    status: 'coming-soon',
+    description: 'Your marketing brain. Turns one idea into a week of on-brand content. Built for solo founders who need to be everywhere at once.',
+    price: '$49',
+    href: null,
+    featured: true,
+  },
+  {
+    id: 'free-starter-kit',
+    name: 'Free AI Agent Starter Kit',
+    category: 'Free',
+    status: 'coming-soon',
+    description: 'Learn the Zaheer system. Core template, setup guide, one example skill. No credit card needed.',
+    price: 'Free',
+    href: null,
+    featured: true,
+  },
+]

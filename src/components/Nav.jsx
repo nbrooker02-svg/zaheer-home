@@ -1,46 +1,97 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+
+const links = [
+  { label: 'Apps', href: '/apps' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+]
 
 export default function Nav() {
-  const navigate = useNavigate()
+  const [open, setOpen] = useState(false)
   const location = useLocation()
-  const isHome = location.pathname === '/'
-
-  function handleNavLink(id) {
-    if (isHome) {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      navigate(`/#${id}`)
-    }
-  }
 
   return (
-    <header className="relative z-20 px-6 py-4" style={{ borderBottom: '1px solid #2A1A12' }}>
-      <div className="max-w-5xl mx-auto flex items-center justify-between">
-        <a href="/" className="flex items-center gap-3" style={{ textDecoration: 'none' }}>
-          <img src="/no-back-zaheer-logo.png" alt="Zaheer Studios" style={{ height: '72px', width: 'auto' }} />
-          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800, fontSize: '18px', color: '#F5EDE6', lineHeight: 1 }}>
-            Zaheer Studios
+    <header
+      className="sticky top-0 z-50"
+      style={{ borderBottom: '1px solid var(--border)', background: 'var(--bg-main)' }}
+    >
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2">
+          <span style={{ fontFamily: "'Instrument Serif', serif", fontSize: '1.25rem', color: 'var(--accent)' }}>
+            &#9679;
           </span>
-        </a>
-        <nav className="flex items-center gap-6">
-          {[
-            { label: 'Packs & Agents', id: 'packs' },
-            { label: 'Apps', id: 'apps' },
-            { label: 'About', id: 'about' },
-          ].map(({ label, id }) => (
-            <button
-              key={id}
-              onClick={() => handleNavLink(id)}
-              className="text-sm font-medium transition-colors duration-150 bg-transparent border-0 cursor-pointer"
-              style={{ color: '#C4956A', fontFamily: "'Inter', sans-serif" }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#F5EDE6' }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#C4956A' }}
+          <span style={{ fontFamily: "'Instrument Serif', serif", fontSize: '1.2rem', color: 'var(--text-primary)', fontWeight: 400 }}>
+            Zaheer Studio
+          </span>
+        </Link>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-1">
+          {links.map(link => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className="btn-ghost"
+              style={{ color: location.pathname.startsWith(link.href) ? 'var(--text-primary)' : 'var(--text-secondary)' }}
             >
-              {label}
-            </button>
+              {link.label}
+            </Link>
           ))}
+          <div className="w-px h-4 mx-3" style={{ background: 'var(--border)' }} />
+          <a href="/studio/browse" className="btn-primary" style={{ padding: '8px 18px' }}>
+            Browse Studio
+          </a>
         </nav>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden flex flex-col justify-center gap-1.5 p-2 -mr-2"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
+          <span
+            className="block w-5 h-px transition-transform duration-200"
+            style={{ background: 'var(--text-primary)', transform: open ? 'rotate(45deg) translate(0, 4px)' : '' }}
+          />
+          <span
+            className="block w-5 h-px transition-opacity duration-200"
+            style={{ background: 'var(--text-primary)', opacity: open ? 0 : 1 }}
+          />
+          <span
+            className="block w-5 h-px transition-transform duration-200"
+            style={{ background: 'var(--text-primary)', transform: open ? 'rotate(-45deg) translate(0, -4px)' : '' }}
+          />
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div
+          className="md:hidden px-6 pb-5 flex flex-col gap-1"
+          style={{ borderTop: '1px solid var(--border)', background: 'var(--bg-main)' }}
+        >
+          {links.map(link => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className="py-2.5 text-sm font-medium"
+              style={{ color: 'var(--text-secondary)' }}
+              onClick={() => setOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <a
+            href="/studio/browse"
+            className="btn-primary mt-3 text-center"
+            onClick={() => setOpen(false)}
+          >
+            Browse Studio
+          </a>
+        </div>
+      )}
     </header>
   )
 }

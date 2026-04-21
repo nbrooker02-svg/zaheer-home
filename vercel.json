@@ -2,11 +2,10 @@
   "rewrites": [
     { "source": "/api/rewrite", "destination": "https://resume-rewriter-snowy.vercel.app/api/rewrite" },
     { "source": "/api/analyze", "destination": "https://zaheer-market-read.vercel.app/api/analyze" },
-    { "source": "/resume-rewrite/:path*", "destination": "https://resume-rewriter-snowy.vercel.app/resume-rewrite/:path*" },
-    { "source": "/market-read", "destination": "https://zaheer-market-read.vercel.app/market-read" },
-    { "source": "/market-read/:path*", "destination": "https://zaheer-market-read.vercel.app/market-read/:path*" },
-    { "source": "/permitpilot", "destination": "https://permitpilot-topaz.vercel.app/permitpilot" },
-    { "source": "/permitpilot/:path*", "destination": "https://permitpilot-topaz.vercel.app/permitpilot/:path*" },
+    { "source": "/apps/resume-rewrite", "destination": "https://resume-rewriter-snowy.vercel.app/resume-rewrite" },
+    { "source": "/apps/resume-rewrite/:path*", "destination": "https://resume-rewriter-snowy.vercel.app/resume-rewrite/:path*" },
+    { "source": "/apps/market-read", "destination": "https://zaheer-market-read.vercel.app/market-read" },
+    { "source": "/apps/market-read/:path*", "destination": "https://zaheer-market-read.vercel.app/market-read/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
