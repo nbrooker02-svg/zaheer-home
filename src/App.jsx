@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { packs } from './data/packs'
 import TerminalMockup from './components/TerminalMockup'
+import PackFileTree from './components/PackFileTree'
 
 const steps = [
   {
@@ -127,18 +128,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Also building: apps strip ── */}
-      <section className="px-6 py-5" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-          <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--text-tertiary)' }}>
-            Also
-          </span>
-          <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-            We build live AI web apps too — resume rewriting, market research, and more. Use them right in your browser, no install required.
-          </p>
-          <Link to="/apps" className="text-sm font-semibold whitespace-nowrap" style={{ color: 'var(--accent)' }}>
-            Browse apps &rarr;
-          </Link>
+      {/* ── Stats strip ── */}
+      <section style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4">
+          {[
+            { value: '3', label: 'Packs available' },
+            { value: '$49', label: 'Per pack, one-time' },
+            { value: '$19/mo', label: 'All-access subscription' },
+            { value: '100%', label: 'Runs locally' },
+          ].map((stat, i) => (
+            <div
+              key={i}
+              className="px-8 py-7 flex flex-col gap-1"
+              style={{ borderRight: i < 3 ? '1px solid var(--border)' : 'none' }}
+            >
+              <span
+                className="font-serif font-bold"
+                style={{ fontSize: '1.75rem', lineHeight: 1, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}
+              >
+                {stat.value}
+              </span>
+              <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>{stat.label}</span>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -173,32 +185,41 @@ export default function Home() {
       {/* ── How It Works — LIGHT ── */}
       <section className="px-6 py-24" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <span className="section-label">How It Works</span>
-            <h2
-              className="font-serif font-bold mt-3"
-              style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.25rem)', lineHeight: 1.2, color: 'var(--text-primary)' }}
-            >
-              From download to working in minutes.
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {steps.map(step => (
-              <div key={step.number} className="flex flex-col gap-4">
-                <span
-                  className="font-serif font-bold"
-                  style={{ fontSize: '3.5rem', lineHeight: 1, color: 'var(--border)' }}
-                >
-                  {step.number}
-                </span>
-                <h3 className="text-base font-semibold" style={{ color: 'var(--text-primary)' }}>
-                  {step.title}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  {step.body}
-                </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Steps */}
+            <div>
+              <span className="section-label">How It Works</span>
+              <h2
+                className="font-serif font-bold mt-3 mb-12"
+                style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.25rem)', lineHeight: 1.2, color: 'var(--text-primary)' }}
+              >
+                From download to working in minutes.
+              </h2>
+              <div className="flex flex-col gap-10">
+                {steps.map((step, i) => (
+                  <div key={step.number} className="flex gap-6 items-start">
+                    <span
+                      className="font-serif font-bold flex-shrink-0"
+                      style={{ fontSize: '2.5rem', lineHeight: 1, color: 'var(--border)', width: '52px' }}
+                    >
+                      {step.number}
+                    </span>
+                    <div className="flex flex-col gap-2 pt-1">
+                      <h3 className="text-base font-semibold" style={{ color: 'var(--text-primary)' }}>
+                        {step.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                        {step.body}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            {/* Visual */}
+            <div className="flex justify-center lg:justify-end">
+              <PackFileTree />
+            </div>
           </div>
         </div>
       </section>
@@ -236,20 +257,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Social Proof — LIGHT ── */}
-      <section className="px-6 py-24" style={{ borderTop: '1px solid var(--border)' }}>
+      {/* ── Also: Live Apps — LIGHT ── */}
+      <section className="px-6 py-20" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-6xl mx-auto">
-          <div className="text-center" style={{ maxWidth: '520px', margin: '0 auto' }}>
-            <p className="section-label mb-6">Early Access</p>
-            <p
-              className="font-serif font-semibold"
-              style={{ fontSize: 'clamp(1.2rem, 2vw, 1.6rem)', lineHeight: 1.5, color: 'var(--text-secondary)' }}
-            >
-              "Early access users are shipping faster."
-            </p>
-            <p className="text-sm mt-6" style={{ color: 'var(--text-tertiary)' }}>
-              Testimonials coming soon. Using it? Tell us what changed.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="section-label">Also From Zaheer Studio</span>
+              <h2
+                className="font-serif font-bold mt-3 mb-4"
+                style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', lineHeight: 1.2, color: 'var(--text-primary)' }}
+              >
+                Live apps. No install.
+              </h2>
+              <p className="text-base leading-relaxed mb-8" style={{ color: 'var(--text-secondary)', maxWidth: '400px' }}>
+                While you're here — we also build AI-powered web apps you can use right in your browser.
+                No Claude Code required.
+              </p>
+              <Link to="/apps" className="btn-secondary">Browse all apps &rarr;</Link>
+            </div>
+            <div className="flex flex-col gap-3">
+              {[
+                { name: 'Resume Rewriter', desc: 'Rewrites your resume to match any job posting.', tag: 'Live' },
+                { name: 'Market Read', desc: 'AI sector analysis on any market or industry.', tag: 'Live' },
+                { name: 'PermitPilot', desc: 'Permit checklists for contractors, by jurisdiction.', tag: 'In development' },
+              ].map(app => (
+                <div
+                  key={app.name}
+                  className="flex items-center justify-between gap-4 rounded px-5 py-4"
+                  style={{ border: '1px solid var(--border)', background: 'var(--bg-surface)' }}
+                >
+                  <div>
+                    <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{app.name}</p>
+                    <p className="text-xs mt-0.5" style={{ color: 'var(--text-tertiary)' }}>{app.desc}</p>
+                  </div>
+                  <span
+                    className="text-xs font-semibold px-2 py-1 rounded-sm flex-shrink-0"
+                    style={{
+                      background: app.tag === 'Live' ? 'var(--success-soft)' : 'var(--bg-elevated)',
+                      color: app.tag === 'Live' ? 'var(--success)' : 'var(--text-tertiary)',
+                    }}
+                  >
+                    {app.tag}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
