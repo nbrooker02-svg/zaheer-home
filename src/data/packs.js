@@ -9,6 +9,7 @@ export const packs = [
     price: '$49',
     priceNote: 'one-time payment',
     href: '/studio/ship-stack',
+    storageKey: 'ship-stack/ship-stack.zip',
     featured: true,
     includes: [
       'Full Claude Code agent with onboarding flow',

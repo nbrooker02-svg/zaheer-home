@@ -8,6 +8,7 @@ export default function Library() {
   const { user, subscription } = useAuth()
   const [purchases, setPurchases] = useState([])
   const [loading, setLoading] = useState(true)
+  const [downloading, setDownloading] = useState(null)
   const [searchParams] = useSearchParams()
   const justPurchased = searchParams.get('success') === 'true'
 
@@ -128,13 +129,28 @@ export default function Library() {
                     </p>
                   </div>
                   <div className="mt-auto pt-2">
-                    {pack.downloadUrl ? (
-                      <a href={pack.downloadUrl} className="btn-primary" style={{ display: 'inline-block' }}>
-                        Download &rarr;
-                      </a>
+                    {pack.storageKey ? (
+                      <button
+                        className="btn-primary"
+                        disabled={downloading === pack.id}
+                        onClick={async () => {
+                          setDownloading(pack.id)
+                          const res = await fetch('/api/download', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ userId: user.id, packId: pack.id }),
+                          })
+                          const { url, error } = await res.json()
+                          if (url) window.open(url, '_blank')
+                          else alert(error || 'Download failed.')
+                          setDownloading(null)
+                        }}
+                      >
+                        {downloading === pack.id ? 'Preparing...' : 'Download →'}
+                      </button>
                     ) : (
                       <span className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-                        Download link coming soon
+                        Download coming soon
                       </span>
                     )}
                   </div>

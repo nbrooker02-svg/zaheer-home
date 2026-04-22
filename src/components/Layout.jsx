@@ -5,7 +5,11 @@ import Footer from './Footer'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  useEffect(() => {
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [pathname])
   return null
 }
 
