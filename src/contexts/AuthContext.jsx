@@ -31,13 +31,13 @@ export function AuthProvider({ children }) {
   }, [])
 
   async function loadSubscription(userId) {
+    const timeout = new Promise(resolve => setTimeout(() => resolve({ data: [] }), 5000))
     try {
-      const { data } = await supabase
-        .from('subscriptions')
-        .select('*')
-        .eq('user_id', userId)
-        .single()
-      setSubscription(data ?? null)
+      const { data } = await Promise.race([
+        supabase.from('subscriptions').select('*').eq('user_id', userId).limit(1),
+        timeout,
+      ])
+      setSubscription(data?.[0] ?? null)
     } catch {
       setSubscription(null)
     } finally {
