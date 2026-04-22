@@ -6,7 +6,7 @@ export const packs = [
     status: 'live',
     tagline: 'From idea to live URL. Your Claude Code agent for building and shipping web apps.',
     description: 'Your Claude Code agent for building and shipping web apps. Type your idea -- it handles the stack, the build, the deploy, and the launch.',
-    price: '$97',
+    price: '$49',
     priceNote: 'one-time payment',
     href: '/studio/ship-stack',
     featured: true,
