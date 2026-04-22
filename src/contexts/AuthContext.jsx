@@ -31,13 +31,18 @@ export function AuthProvider({ children }) {
   }, [])
 
   async function loadSubscription(userId) {
-    const { data } = await supabase
-      .from('subscriptions')
-      .select('*')
-      .eq('user_id', userId)
-      .single()
-    setSubscription(data ?? null)
-    setLoading(false)
+    try {
+      const { data } = await supabase
+        .from('subscriptions')
+        .select('*')
+        .eq('user_id', userId)
+        .single()
+      setSubscription(data ?? null)
+    } catch {
+      setSubscription(null)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
