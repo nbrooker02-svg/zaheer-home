@@ -6,6 +6,6 @@
     { "source": "/apps/resume-rewrite/:path*", "destination": "https://resume-rewriter-snowy.vercel.app/resume-rewrite/:path*" },
     { "source": "/apps/market-read", "destination": "https://zaheer-market-read.vercel.app/market-read" },
     { "source": "/apps/market-read/:path*", "destination": "https://zaheer-market-read.vercel.app/market-read/:path*" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
