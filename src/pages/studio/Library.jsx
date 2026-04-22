@@ -13,14 +13,26 @@ export default function Library() {
 
   useEffect(() => {
     if (!user) return
-    supabase
-      .from('purchases')
-      .select('pack_id')
-      .eq('user_id', user.id)
-      .then(({ data }) => {
-        setPurchases(data?.map(p => p.pack_id) ?? [])
-        setLoading(false)
-      })
+
+    async function init() {
+      const sessionId = searchParams.get('session_id')
+      if (sessionId) {
+        await fetch('/api/verify-purchase', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId }),
+        })
+      }
+
+      const { data } = await supabase
+        .from('purchases')
+        .select('pack_id')
+        .eq('user_id', user.id)
+      setPurchases(data?.map(p => p.pack_id) ?? [])
+      setLoading(false)
+    }
+
+    init()
   }, [user])
 
   const hasAllAccess = subscription?.status === 'active'

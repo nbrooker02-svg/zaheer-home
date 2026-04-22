@@ -1,47 +1,55 @@
-import fs from 'fs'
-import path from 'path'
+import Stripe from 'stripe'
+import { createClient } from '@supabase/supabase-js'
 
-// Actual ZIP filename in public/
-const ZIP_FILENAME = 'Zaheer Studio |Ship Stack - AI App Builder Agent.zip'
-const ZIP_DOWNLOAD_NAME = 'ship-stack.zip'
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+const supabase = createClient(
+  process.env.VITE_SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+)
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
+  if (req.method !== 'POST') return res.status(405).end()
 
   const { sessionId } = req.body
-
-  if (!sessionId) {
-    return res.status(400).json({ error: 'Missing sessionId' })
-  }
-
-  // IMPORTANT: STRIPE_SECRET_KEY must be set in Vercel environment variables.
-  // Dashboard → Project → Settings → Environment Variables
-  const { default: Stripe } = await import('stripe')
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+  if (!sessionId) return res.status(400).json({ error: 'Missing sessionId' })
 
   let session
   try {
     session = await stripe.checkout.sessions.retrieve(sessionId)
   } catch {
-    return res.status(403).json({ error: 'Invalid session ID' })
+    return res.status(403).json({ error: 'Invalid session' })
   }
 
-  if (session.payment_status !== 'paid') {
-    return res.status(403).json({ error: 'Payment not completed' })
+  if (session.payment_status !== 'paid' && session.status !== 'complete') {
+    return res.status(400).json({ error: 'Payment not completed' })
   }
 
-  const zipPath = path.join(process.cwd(), 'public', ZIP_FILENAME)
+  const { userId, packId } = session.metadata
+  if (!userId) return res.status(400).json({ error: 'Missing userId in session' })
 
-  if (!fs.existsSync(zipPath)) {
-    return res.status(503).json({ error: 'File not yet available' })
+  try {
+    if (session.mode === 'payment') {
+      await supabase.from('purchases').upsert({
+        user_id: userId,
+        pack_id: packId,
+        stripe_session_id: session.id,
+        amount: session.amount_total,
+      }, { onConflict: 'stripe_session_id' })
+    }
+
+    if (session.mode === 'subscription') {
+      await supabase.from('subscriptions').upsert({
+        user_id: userId,
+        stripe_customer_id: session.customer,
+        stripe_subscription_id: session.subscription,
+        status: 'active',
+        plan: packId === 'all-access-yearly' ? 'yearly' : 'monthly',
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' })
+    }
+
+    return res.status(200).json({ ok: true })
+  } catch (err) {
+    return res.status(500).json({ error: err.message })
   }
-
-  const fileBuffer = fs.readFileSync(zipPath)
-
-  res.setHeader('Content-Type', 'application/zip')
-  res.setHeader('Content-Disposition', `attachment; filename="${ZIP_DOWNLOAD_NAME}"`)
-  res.setHeader('Content-Length', fileBuffer.length)
-  return res.status(200).send(fileBuffer)
 }
