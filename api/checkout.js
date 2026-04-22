@@ -8,7 +8,7 @@ const PRICES = {
   'all-access-yearly': process.env.STRIPE_YEARLY_PRICE_ID,
 }
 
-const SITE_URL = process.env.SITE_URL || 'https://zaheer.studio'
+const SITE_URL = process.env.SITE_URL || 'https://www.zaheer.studio'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
@@ -26,6 +26,7 @@ export default async function handler(req, res) {
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${SITE_URL}/studio/library?success=true&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE_URL}${cancelPath || '/pricing'}`,
+      phone_number_collection: { enabled: false },
       metadata: {
         userId: userId || '',
         packId: productKey,

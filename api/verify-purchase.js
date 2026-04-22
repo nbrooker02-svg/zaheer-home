@@ -27,29 +27,35 @@ export default async function handler(req, res) {
   const { userId, packId } = session.metadata
   if (!userId) return res.status(400).json({ error: 'Missing userId in session' })
 
-  try {
-    if (session.mode === 'payment') {
-      await supabase.from('purchases').upsert({
+  if (session.mode === 'payment') {
+    const existing = await supabase
+      .from('purchases')
+      .select('id')
+      .eq('stripe_session_id', session.id)
+      .single()
+
+    if (!existing.data) {
+      const { error } = await supabase.from('purchases').insert({
         user_id: userId,
         pack_id: packId,
         stripe_session_id: session.id,
         amount: session.amount_total,
-      }, { onConflict: 'stripe_session_id' })
+      })
+      if (error) return res.status(500).json({ error: error.message })
     }
-
-    if (session.mode === 'subscription') {
-      await supabase.from('subscriptions').upsert({
-        user_id: userId,
-        stripe_customer_id: session.customer,
-        stripe_subscription_id: session.subscription,
-        status: 'active',
-        plan: packId === 'all-access-yearly' ? 'yearly' : 'monthly',
-        updated_at: new Date().toISOString(),
-      }, { onConflict: 'user_id' })
-    }
-
-    return res.status(200).json({ ok: true })
-  } catch (err) {
-    return res.status(500).json({ error: err.message })
   }
+
+  if (session.mode === 'subscription') {
+    const { error } = await supabase.from('subscriptions').upsert({
+      user_id: userId,
+      stripe_customer_id: session.customer,
+      stripe_subscription_id: session.subscription,
+      status: 'active',
+      plan: packId === 'all-access-yearly' ? 'yearly' : 'monthly',
+      updated_at: new Date().toISOString(),
+    }, { onConflict: 'user_id' })
+    if (error) return res.status(500).json({ error: error.message })
+  }
+
+  return res.status(200).json({ ok: true })
 }

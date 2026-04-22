@@ -46,7 +46,7 @@ export const packs = [
       },
       {
         q: 'Can I get a refund?',
-        a: 'Yes, within 7 days if it doesn\'t work for your use case. Email hello@zaheer.studio.',
+        a: 'Email hello@zaheer.studio if you have issues. We\'ll work it out.',
       },
     ],
   },
