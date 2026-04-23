@@ -15,7 +15,16 @@ export default async function handler(req, res) {
   const pack = packs.find(p => p.id === packId)
   if (!pack || !pack.storageKey) return res.status(404).json({ error: 'File not found' })
 
-  // Free packs only require a logged-in user. Paid packs require purchase or active sub.
+  // Confirm the userId belongs to a real signed-up user. Profiles are auto-created
+  // by the on_auth_user_created trigger, so a row here means they completed magic-link auth.
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('id')
+    .eq('id', userId)
+    .maybeSingle()
+  if (!profile) return res.status(401).json({ error: 'Sign in required' })
+
+  // Free packs only require a signed-up user. Paid packs require purchase or active sub.
   if (pack.price !== 'Free') {
     const [{ data: purchase }, { data: subscription }] = await Promise.all([
       supabase.from('purchases').select('id').eq('user_id', userId).eq('pack_id', packId).maybeSingle(),
