@@ -16,7 +16,7 @@ export const packs = [
       '8 skills: scaffold, build, test, deploy, fix, debug, launch, maintain',
       'Vercel deployment config pre-wired',
       'Works with React, Next.js, Vite, and Node.js',
-      'Free updates included',
+      'Free updates included (monthly subscribers only)',
     ],
     problem: 'Building a web app alone means context switching between code, config, deployment, and debugging. Every decision costs time you don\'t have.',
     solution: 'Ship Stack gives Claude Code a permanent memory of your stack, your preferences, and your goals. It plans, builds, and deploys -- you just describe what you want.',

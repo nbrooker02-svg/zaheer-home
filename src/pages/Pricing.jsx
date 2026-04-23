@@ -141,7 +141,7 @@ export default function Pricing() {
                 Buy what you need. Keep it forever.
               </p>
               <ul className="flex flex-col gap-3">
-                {['Any single pack of your choice', 'Lifetime access to current version', 'Free updates included', 'Email support'].map(item => (
+                {['Any single pack of your choice', 'Lifetime access to current version', 'Email support'].map(item => (
                   <li key={item} className="flex gap-2.5 items-start text-sm" style={{ color: 'var(--text-secondary)' }}>
                     <span style={{ color: 'var(--warm)', flexShrink: 0, marginTop: '1px' }}>&#10003;</span>
                     {item}
