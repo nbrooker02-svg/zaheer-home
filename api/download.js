@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import { packs } from '../src/data/packs.js'
 
 const supabase = createClient(
   process.env.VITE_SUPABASE_URL,
@@ -11,26 +12,23 @@ export default async function handler(req, res) {
   const { userId, packId } = req.body
   if (!userId || !packId) return res.status(400).json({ error: 'Missing params' })
 
-  // Verify user has access: purchased this pack or has active subscription
-  const [{ data: purchase }, { data: subscription }] = await Promise.all([
-    supabase.from('purchases').select('id').eq('user_id', userId).eq('pack_id', packId).single(),
-    supabase.from('subscriptions').select('status').eq('user_id', userId).single(),
-  ])
+  const pack = packs.find(p => p.id === packId)
+  if (!pack || !pack.storageKey) return res.status(404).json({ error: 'File not found' })
 
-  const hasAccess = !!purchase || subscription?.status === 'active'
-  if (!hasAccess) return res.status(403).json({ error: 'No access' })
+  // Free packs only require a logged-in user. Paid packs require purchase or active sub.
+  if (pack.price !== 'Free') {
+    const [{ data: purchase }, { data: subscription }] = await Promise.all([
+      supabase.from('purchases').select('id').eq('user_id', userId).eq('pack_id', packId).maybeSingle(),
+      supabase.from('subscriptions').select('status').eq('user_id', userId).maybeSingle(),
+    ])
 
-  // Map pack ID to storage path
-  const storagePaths = {
-    'ship-stack': 'ship-stack/ship-stack.zip',
+    const hasAccess = !!purchase || subscription?.status === 'active'
+    if (!hasAccess) return res.status(403).json({ error: 'No access' })
   }
-
-  const path = storagePaths[packId]
-  if (!path) return res.status(404).json({ error: 'File not found' })
 
   const { data, error } = await supabase.storage
     .from('packs')
-    .createSignedUrl(path, 3600) // 1 hour expiry
+    .createSignedUrl(pack.storageKey, 3600)
 
   if (error) return res.status(500).json({ error: error.message })
 

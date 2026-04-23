@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "packs:upload": "node scripts/upload-packs.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.104.0",
+    "adm-zip": "^0.5.17",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.14.1",

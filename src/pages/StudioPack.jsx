@@ -37,9 +37,15 @@ export default function StudioPack() {
   const [buyLoading, setBuyLoading] = useState(false)
   const pack = packs.find(p => p.id === packId)
 
+  const isFree = pack?.price === 'Free'
+
   async function handleBuy() {
     if (!user) {
       navigate('/studio/auth')
+      return
+    }
+    if (isFree) {
+      navigate('/studio/library')
       return
     }
     setBuyLoading(true)
@@ -57,6 +63,10 @@ export default function StudioPack() {
     }
     setBuyLoading(false)
   }
+
+  const ctaLabel = isFree
+    ? (user ? 'Go to your library →' : 'Sign up to download →')
+    : `Buy ${pack?.price} →`
 
   if (!pack) {
     return (
@@ -118,14 +128,16 @@ export default function StudioPack() {
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
                 <button className="btn-white" onClick={handleBuy} disabled={buyLoading}>
-                  {buyLoading ? 'Loading...' : `Buy ${pack.price} →`}
+                  {buyLoading ? 'Loading...' : ctaLabel}
                 </button>
-                <Link to="/pricing" className="btn-secondary" style={{ borderColor: 'rgba(255,255,255,0.3)', color: '#FFFFFF' }}>
-                  Or get all packs &rarr;
-                </Link>
+                {!isFree && (
+                  <Link to="/pricing" className="btn-secondary" style={{ borderColor: 'rgba(255,255,255,0.3)', color: '#FFFFFF' }}>
+                    Or get all packs &rarr;
+                  </Link>
+                )}
               </div>
               <p className="text-xs mt-4" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                7-day refund guarantee. Email hello@zaheer.studio.
+                {isFree ? 'Free forever. Account required so you can re-download anytime.' : '7-day refund guarantee. Email hello@zaheer.studio.'}
               </p>
             </div>
             <div>
@@ -173,6 +185,7 @@ export default function StudioPack() {
       </section>
 
       {/* Outcomes — RED */}
+      {pack.outcomes.length > 0 && (
       <section className="px-6 py-20" style={{ background: 'var(--bg-red)' }}>
         <div className="max-w-6xl mx-auto">
           <span className="section-label-light">What You'll Actually Do</span>
@@ -197,7 +210,10 @@ export default function StudioPack() {
         </div>
       </section>
 
+      )}
+
       {/* Setup Steps — DARK */}
+      {pack.setupSteps.length > 0 && (
       <section className="px-6 py-20" style={{ background: 'var(--bg-dark)' }}>
         <div className="max-w-6xl mx-auto">
           <span className="section-label-light">Setup</span>
@@ -221,7 +237,10 @@ export default function StudioPack() {
         </div>
       </section>
 
-      {/* Pricing options */}
+      )}
+
+      {/* Pricing options — paid packs only */}
+      {!isFree && (
       <section className="px-6 py-20" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="max-w-6xl mx-auto">
           <span className="section-label">Pricing</span>
@@ -263,6 +282,8 @@ export default function StudioPack() {
         </div>
       </section>
 
+      )}
+
       {/* FAQ */}
       {pack.faq.length > 0 && (
         <section className="px-6 py-20">
@@ -294,10 +315,14 @@ export default function StudioPack() {
             Get {pack.name} and start working today.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button className="btn-white">Buy {pack.price} &rarr;</button>
-            <Link to="/pricing" className="btn-secondary" style={{ borderColor: 'rgba(255,255,255,0.3)', color: '#FFFFFF' }}>
-              See all plans
-            </Link>
+            <button className="btn-white" onClick={handleBuy} disabled={buyLoading}>
+              {buyLoading ? 'Loading...' : ctaLabel}
+            </button>
+            {!isFree && (
+              <Link to="/pricing" className="btn-secondary" style={{ borderColor: 'rgba(255,255,255,0.3)', color: '#FFFFFF' }}>
+                See all plans
+              </Link>
+            )}
           </div>
         </div>
       </section>
