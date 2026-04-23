@@ -279,7 +279,7 @@ export default function Home() {
               {[
                 { name: 'Resume Rewriter', desc: 'Rewrites your resume to match any job posting.', tag: 'Live' },
                 { name: 'Market Read', desc: 'AI sector analysis on any market or industry.', tag: 'Live' },
-                { name: 'PermitPilot', desc: 'Permit checklists for contractors, by jurisdiction.', tag: 'In development' },
+                { name: 'PermitPilot', desc: 'Permit checklists for contractors, by jurisdiction.', tag: 'Live', href: '/apps/permitpilot' },
               ].map(app => (
                 <div
                   key={app.name}
