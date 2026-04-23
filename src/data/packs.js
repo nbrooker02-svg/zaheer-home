@@ -73,7 +73,7 @@ export const packs = [
     id: 'free-starter-kit',
     name: 'Free AI Agent Starter Kit',
     category: 'Free',
-    status: 'live',
+    status: 'coming-soon',
     tagline: 'Learn the Zaheer system. No credit card needed.',
     description: 'Learn the Zaheer system. Core template, setup guide, one example skill. No credit card needed.',
     price: 'Free',
