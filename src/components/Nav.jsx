@@ -85,13 +85,22 @@ export default function Nav() {
               </Link>
             </>
           ) : (
-            <Link
-              to="/studio/auth"
-              className="btn-primary"
-              style={{ padding: '8px 18px', fontSize: '0.85rem' }}
-            >
-              Sign in
-            </Link>
+            <>
+              <Link
+                to="/studio/auth"
+                className="btn-ghost text-sm"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                Sign in
+              </Link>
+              <Link
+                to="/studio/auth?mode=signup"
+                className="btn-primary"
+                style={{ padding: '8px 18px', fontSize: '0.85rem' }}
+              >
+                Create account
+              </Link>
+            </>
           )}
         </nav>
 
@@ -153,13 +162,23 @@ export default function Nav() {
                 </Link>
               </>
             ) : (
-              <Link
-                to="/studio/auth"
-                className="btn-primary text-center block"
-                onClick={() => setOpen(false)}
-              >
-                Sign in
-              </Link>
+              <>
+                <Link
+                  to="/studio/auth?mode=signup"
+                  className="btn-primary text-center block"
+                  onClick={() => setOpen(false)}
+                >
+                  Create account
+                </Link>
+                <Link
+                  to="/studio/auth"
+                  className="text-sm text-center py-2"
+                  style={{ color: 'var(--text-secondary)' }}
+                  onClick={() => setOpen(false)}
+                >
+                  Sign in
+                </Link>
+              </>
             )}
           </div>
         </div>

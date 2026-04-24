@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 import { useAuth } from '../../contexts/AuthContext'
 
 export default function Auth() {
   const { user } = useAuth()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const isSignup = searchParams.get('mode') === 'signup'
   const [email, setEmail] = useState('')
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -43,11 +45,13 @@ export default function Auth() {
             className="font-serif font-bold mt-3"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.1, color: '#FFFFFF' }}
           >
-            {sent ? 'Check your email.' : 'Sign in to your studio.'}
+            {sent ? 'Check your email.' : (isSignup ? 'Create your account.' : 'Sign in to your studio.')}
           </h1>
           {!sent && (
             <p className="text-lg mt-4" style={{ color: 'rgba(255,255,255,0.72)', maxWidth: '400px' }}>
-              Enter your email — we'll send a magic link. No password needed.
+              {isSignup
+                ? 'Enter your email to get started — we\'ll send a magic link. No password needed.'
+                : 'Enter your email — we\'ll send a magic link. No password needed.'}
             </p>
           )}
         </div>

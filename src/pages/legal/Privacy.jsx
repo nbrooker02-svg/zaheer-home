@@ -89,6 +89,14 @@ export default function Privacy() {
             Zaheer Studios is not intended for anyone under 13. We don't knowingly collect data from children.
           </p>
 
+          <h2>Business transfers</h2>
+          <p>
+            If Zaheer Studios is involved in a merger, acquisition, sale of assets, or transfer of ownership,
+            your information may be transferred as part of that transaction. The new owner will be required
+            to honor the commitments made in this Privacy Policy, or we will notify you and give you the
+            opportunity to opt out before your data becomes subject to a different policy.
+          </p>
+
           <h2>Changes</h2>
           <p>
             We may update this policy from time to time. Material changes will be flagged on the site
