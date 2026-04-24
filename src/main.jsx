@@ -15,6 +15,9 @@ import Pricing from './pages/Pricing'
 import Auth from './pages/studio/Auth'
 import Library from './pages/studio/Library'
 import Account from './pages/studio/Account'
+import Terms from './pages/legal/Terms'
+import Privacy from './pages/legal/Privacy'
+import Refunds from './pages/legal/Refunds'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -38,6 +41,9 @@ createRoot(document.getElementById('root')).render(
               path="/studio/account"
               element={<ProtectedRoute><Account /></ProtectedRoute>}
             />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/refunds" element={<Refunds />} />
           </Route>
         </Routes>
       </AuthProvider>

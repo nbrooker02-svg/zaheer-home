@@ -173,7 +173,7 @@ export default function StudioPack() {
               <p className="text-xs mt-4" style={{ color: 'rgba(255,255,255,0.4)' }}>
                 {hasAccess
                   ? (isSubscribed ? 'You have All-Access. Download anytime from your library.' : 'You own this pack. Download anytime from your library.')
-                  : (isFree ? 'Free forever. Account required so you can re-download anytime.' : '7-day refund guarantee. Email hello@zaheer.studio.')}
+                  : (isFree ? 'Free forever. Account required so you can re-download anytime.' : 'All sales final — see refunds policy.')}
               </p>
             </div>
             <div>

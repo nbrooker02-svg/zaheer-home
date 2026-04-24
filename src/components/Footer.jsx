@@ -9,10 +9,10 @@ const products = [
 
 const company = [
   { label: 'About', href: '/about', internal: true },
-  { label: 'Blog', href: '/blog', internal: false },
   { label: 'Contact', href: '/contact', internal: true },
-  { label: 'Terms', href: '/terms', internal: false },
-  { label: 'Privacy', href: '/privacy', internal: false },
+  { label: 'Terms', href: '/terms', internal: true },
+  { label: 'Privacy', href: '/privacy', internal: true },
+  { label: 'Refunds', href: '/refunds', internal: true },
 ]
 
 function FooterLink({ item }) {
