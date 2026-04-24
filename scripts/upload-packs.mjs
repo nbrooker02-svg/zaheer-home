@@ -57,15 +57,31 @@ if (packs.length === 0) {
 
 for (const packId of packs) {
   const packDir = join(SOURCE_DIR, packId)
-  const entries = readdirSync(packDir).filter(n => !n.startsWith('.DS_Store'))
+  const entries = readdirSync(packDir).filter(n => !n.startsWith('.'))
   if (entries.length === 0) {
     console.log(`⊘  ${packId} — folder is empty, skipping`)
     continue
   }
 
-  const zip = new AdmZip()
-  zip.addLocalFolder(packDir, packId) // wrap contents inside a top-level folder named after the pack
-  const buffer = zip.toBuffer()
+  let buffer
+  const zipFiles = entries.filter(n => n.toLowerCase().endsWith('.zip'))
+
+  if (zipFiles.length === 1 && entries.length === 1) {
+    // Pre-built zip dropped in — upload as-is
+    buffer = readFileSync(join(packDir, zipFiles[0]))
+    console.log(`   ${packId} — using pre-built zip: ${zipFiles[0]}`)
+  } else if (zipFiles.length > 0) {
+    console.error(`✗  ${packId} — folder contains both .zip files and other files. Either drop in a single .zip OR raw files, not both.`)
+    process.exit(1)
+  } else {
+    // Build a zip from raw files, ignoring hidden/system files
+    const zip = new AdmZip()
+    zip.addLocalFolder(packDir, packId, (filename) => {
+      const base = filename.split('/').pop()
+      return !base.startsWith('.')
+    })
+    buffer = zip.toBuffer()
+  }
 
   const remotePath = `${packId}/${packId}.zip`
   const { error } = await supabase.storage
