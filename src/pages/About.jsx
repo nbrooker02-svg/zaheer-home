@@ -78,17 +78,12 @@ export default function About() {
 
             <div className="flex flex-col gap-5 pt-4">
               <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                I'm Nathan. I built this studio because I needed it first. Every agent in the
-                studio runs in my own work before it ships to anyone else.
+                Zaheer Studios is run by one person. Every agent in the studio runs in real
+                work before it ships to anyone else.
               </p>
               <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                You can email me directly. I read everything that comes in.
+                You can email us directly at <a href="mailto:info@zaheer.studio" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>info@zaheer.studio</a>. We read everything that comes in.
               </p>
-            </div>
-
-            <div className="flex flex-col gap-1 pt-8 mt-2" style={{ borderTop: '1px solid var(--border)' }}>
-              <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Nathan Brooker</p>
-              <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>Founder, Zaheer Studios</p>
             </div>
           </div>
         </div>

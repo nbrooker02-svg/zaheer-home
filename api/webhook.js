@@ -50,7 +50,7 @@ async function sendWelcomeEmail({ email, mode, packId }) {
       </ol>
       ${futureLine}
       <p style="margin-top: 24px;">Questions or issues? Just reply to this email.</p>
-      <p style="margin-top: 32px; color: #6B6A67;">— Nathan<br/>Zaheer Studios</p>
+      <p style="margin-top: 32px; color: #6B6A67;">— The Zaheer Studios team</p>
     </div>
   `
 
