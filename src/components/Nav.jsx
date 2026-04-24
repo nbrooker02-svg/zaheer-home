@@ -68,13 +68,22 @@ export default function Nav() {
           ))}
           <div className="w-px h-4 mx-3" style={{ background: 'var(--border)' }} />
           {user ? (
-            <Link
-              to="/studio/library"
-              className="btn-primary"
-              style={{ padding: '8px 18px', fontSize: '0.85rem' }}
-            >
-              My Library
-            </Link>
+            <>
+              <Link
+                to="/studio/account"
+                className="btn-ghost text-sm"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                Account
+              </Link>
+              <Link
+                to="/studio/library"
+                className="btn-primary"
+                style={{ padding: '8px 18px', fontSize: '0.85rem' }}
+              >
+                My Library
+              </Link>
+            </>
           ) : (
             <Link
               to="/studio/auth"
@@ -124,15 +133,25 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <div className="mt-3">
+          <div className="mt-3 flex flex-col gap-2">
             {user ? (
-              <Link
-                to="/studio/library"
-                className="btn-primary text-center block"
-                onClick={() => setOpen(false)}
-              >
-                My Library
-              </Link>
+              <>
+                <Link
+                  to="/studio/library"
+                  className="btn-primary text-center block"
+                  onClick={() => setOpen(false)}
+                >
+                  My Library
+                </Link>
+                <Link
+                  to="/studio/account"
+                  className="text-sm text-center py-2"
+                  style={{ color: 'var(--text-secondary)' }}
+                  onClick={() => setOpen(false)}
+                >
+                  Account
+                </Link>
+              </>
             ) : (
               <Link
                 to="/studio/auth"

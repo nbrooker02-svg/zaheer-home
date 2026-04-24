@@ -63,7 +63,21 @@ export default function StudioPack() {
       return
     }
     if (hasAccess) {
-      navigate('/studio/library')
+      // Owned — fetch a signed URL and trigger the download directly
+      setBuyLoading(true)
+      try {
+        const res = await fetch('/api/download', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: user.id, packId: pack.id }),
+        })
+        const { url, error } = await res.json()
+        if (url) window.open(url, '_blank')
+        else alert(error || 'Download failed.')
+      } catch {
+        alert('Download failed. Try again.')
+      }
+      setBuyLoading(false)
       return
     }
     setBuyLoading(true)

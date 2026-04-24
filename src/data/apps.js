@@ -3,10 +3,10 @@ export const apps = [
     id: 'resume-rewrite',
     name: 'Resume Rewriter',
     category: 'Career',
-    status: 'live',
+    status: 'development',
     description: 'Paste your resume, name your target job. Claude rewrites it -- professional language, right keywords, real experience reframed.',
-    price: '$9 one-time',
-    href: '/apps/resume-rewrite',
+    price: 'Coming soon',
+    href: null,
   },
   {
     id: 'market-read',
