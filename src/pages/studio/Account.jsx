@@ -27,7 +27,7 @@ export default function Account() {
       if (url) window.location.href = url
       else setPortalError(error || 'Could not open billing portal.')
     } catch {
-      setPortalError('Something went wrong. Try again or email hello@zaheer.studio.')
+      setPortalError('Something went wrong. Try again or email info@zaheer.studio.')
     }
     setPortalLoading(false)
   }

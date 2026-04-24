@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "Can I upgrade from one-time to subscription later?",
-    a: "Yes. Email hello@zaheer.studio and we'll apply a credit toward your subscription.",
+    a: "Yes. Email info@zaheer.studio and we'll apply a credit toward your subscription.",
   },
   {
     q: "When do new packs ship?",

@@ -47,7 +47,7 @@ export default function Refunds() {
           <h2>If something is broken</h2>
           <p>
             If you can't access a pack you paid for, or a download is corrupt, email{' '}
-            <a href="mailto:hello@zaheer.studio" style={{ color: 'var(--accent)' }}>hello@zaheer.studio</a> and
+            <a href="mailto:info@zaheer.studio" style={{ color: 'var(--accent)' }}>info@zaheer.studio</a> and
             we'll resolve it. Technical issues that prevent you from using what you bought are our
             problem to fix, not yours.
           </p>
@@ -59,7 +59,7 @@ export default function Refunds() {
 
           <h2>Contact</h2>
           <p>
-            Questions? Email <a href="mailto:hello@zaheer.studio" style={{ color: 'var(--accent)' }}>hello@zaheer.studio</a>.
+            Questions? Email <a href="mailto:info@zaheer.studio" style={{ color: 'var(--accent)' }}>info@zaheer.studio</a>.
             See also our <Link to="/terms" style={{ color: 'var(--accent)' }}>Terms of Service</Link>.
           </p>
         </div>

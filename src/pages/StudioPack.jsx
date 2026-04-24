@@ -128,7 +128,7 @@ export default function StudioPack() {
               This pack is coming soon. Be the first to know when it ships.
             </p>
             <a
-              href="mailto:hello@zaheer.studio?subject=Notify me: {pack.name}"
+              href="mailto:info@zaheer.studio?subject=Notify me: {pack.name}"
               className="btn-white"
             >
               Notify me when it's ready &rarr;

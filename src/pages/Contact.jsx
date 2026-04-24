@@ -29,13 +29,13 @@ export default function Contact() {
                 Email
               </p>
               <a
-                href="mailto:hello@zaheer.studio"
+                href="mailto:info@zaheer.studio"
                 className="text-base font-semibold transition-colors duration-150"
                 style={{ color: 'var(--accent)' }}
                 onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-hover)' }}
                 onMouseLeave={e => { e.currentTarget.style.color = 'var(--accent)' }}
               >
-                hello@zaheer.studio
+                info@zaheer.studio
               </a>
             </div>
             <div className="pt-4" style={{ borderTop: '1px solid var(--border)' }}>

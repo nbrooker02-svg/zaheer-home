@@ -100,7 +100,7 @@ export default function Terms() {
 
           <h2>12. Contact</h2>
           <p>
-            Questions about these terms? Email <a href="mailto:hello@zaheer.studio" style={{ color: 'var(--accent)' }}>hello@zaheer.studio</a>.
+            Questions about these terms? Email <a href="mailto:info@zaheer.studio" style={{ color: 'var(--accent)' }}>info@zaheer.studio</a>.
           </p>
         </div>
       </section>

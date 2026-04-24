@@ -64,7 +64,7 @@ async function sendWelcomeEmail({ email, mode, packId }) {
       body: JSON.stringify({
         from: 'Zaheer Studios <noreply@zaheer.studio>',
         to: [email],
-        reply_to: 'hello@zaheer.studio',
+        reply_to: 'info@zaheer.studio',
         subject,
         html,
       }),

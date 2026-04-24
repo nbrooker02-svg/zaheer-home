@@ -47,7 +47,7 @@ export const packs = [
       },
       {
         q: 'Can I get a refund?',
-        a: 'All sales are final. If something is broken or you can\'t access what you bought, email hello@zaheer.studio and we\'ll resolve it.',
+        a: 'All sales are final. If something is broken or you can\'t access what you bought, email info@zaheer.studio and we\'ll resolve it.',
       },
     ],
   },

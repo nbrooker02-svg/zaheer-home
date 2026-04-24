@@ -76,7 +76,7 @@ export default function Privacy() {
           <h2>Your rights</h2>
           <p>
             You can request a copy of your data, ask for it to be corrected, or ask us to delete your
-            account at any time. Email <a href="mailto:hello@zaheer.studio" style={{ color: 'var(--accent)' }}>hello@zaheer.studio</a> and
+            account at any time. Email <a href="mailto:info@zaheer.studio" style={{ color: 'var(--accent)' }}>info@zaheer.studio</a> and
             we'll respond within 30 days.
           </p>
           <p>
@@ -98,7 +98,7 @@ export default function Privacy() {
 
           <h2>Contact</h2>
           <p>
-            Questions about your data? Email <a href="mailto:hello@zaheer.studio" style={{ color: 'var(--accent)' }}>hello@zaheer.studio</a>.
+            Questions about your data? Email <a href="mailto:info@zaheer.studio" style={{ color: 'var(--accent)' }}>info@zaheer.studio</a>.
             See also our <Link to="/terms" style={{ color: 'var(--accent)' }}>Terms of Service</Link>.
           </p>
         </div>
