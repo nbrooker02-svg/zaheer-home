@@ -4,6 +4,7 @@
     { "source": "/api/analyze", "destination": "https://zaheer-market-read.vercel.app/api/analyze" },
     { "source": "/apps/resume-rewrite", "destination": "https://resume-rewriter-snowy.vercel.app/resume-rewrite" },
     { "source": "/apps/resume-rewrite/:path*", "destination": "https://resume-rewriter-snowy.vercel.app/resume-rewrite/:path*" },
+    { "source": "/resume-rewrite/:path*", "destination": "https://resume-rewriter-snowy.vercel.app/resume-rewrite/:path*" },
     { "source": "/apps/market-read", "destination": "https://zaheer-market-read.vercel.app/market-read" },
     { "source": "/apps/market-read/:path*", "destination": "https://zaheer-market-read.vercel.app/market-read/:path*" },
     { "source": "/apps/permitpilot", "destination": "https://permitpilot-topaz.vercel.app/apps/permitpilot" },

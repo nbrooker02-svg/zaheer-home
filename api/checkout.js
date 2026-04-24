@@ -24,6 +24,7 @@ export default async function handler(req, res) {
     const session = await stripe.checkout.sessions.create({
       mode: isSubscription ? 'subscription' : 'payment',
       line_items: [{ price: priceId, quantity: 1 }],
+      payment_method_types: ['card'],   // Explicitly disable Stripe Link (SMS verification flow)
       success_url: `${SITE_URL}/studio/library?success=true&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE_URL}${cancelPath || '/pricing'}`,
       phone_number_collection: { enabled: false },

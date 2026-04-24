@@ -51,11 +51,13 @@ export default function Studio() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [query, setQuery] = useState('')
 
-  const filtered = packs.filter(p => {
-    const matchCat = activeCategory === 'All' || p.category === activeCategory
-    const matchQuery = !query || p.name.toLowerCase().includes(query.toLowerCase()) || p.description.toLowerCase().includes(query.toLowerCase())
-    return matchCat && matchQuery
-  })
+  const filtered = packs
+    .filter(p => {
+      const matchCat = activeCategory === 'All' || p.category === activeCategory
+      const matchQuery = !query || p.name.toLowerCase().includes(query.toLowerCase()) || p.description.toLowerCase().includes(query.toLowerCase())
+      return matchCat && matchQuery
+    })
+    .sort((a, b) => (a.status === 'live' ? 0 : 1) - (b.status === 'live' ? 0 : 1))
 
   return (
     <>

@@ -1,8 +1,9 @@
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { packs } from '../data/packs'
 import TerminalMockup from '../components/TerminalMockup'
 import { useAuth } from '../contexts/AuthContext'
+import { supabase } from '../lib/supabase'
 
 function FAQItem({ faq }) {
   const [open, setOpen] = useState(false)
@@ -33,18 +34,35 @@ export default function StudioPack() {
   const { packId } = useParams()
   const navigate = useNavigate()
   const location = useLocation()
-  const { user } = useAuth()
+  const { user, subscription } = useAuth()
   const [buyLoading, setBuyLoading] = useState(false)
+  const [hasPurchase, setHasPurchase] = useState(false)
   const pack = packs.find(p => p.id === packId)
 
   const isFree = pack?.price === 'Free'
+  const isSubscribed = subscription?.status === 'active'
+  const hasAccess = !!user && (isFree || isSubscribed || hasPurchase)
+
+  useEffect(() => {
+    if (!user || !pack || isFree || isSubscribed) {
+      setHasPurchase(false)
+      return
+    }
+    supabase
+      .from('purchases')
+      .select('id')
+      .eq('user_id', user.id)
+      .eq('pack_id', pack.id)
+      .maybeSingle()
+      .then(({ data }) => setHasPurchase(!!data))
+  }, [user, pack?.id, isFree, isSubscribed])
 
   async function handleBuy() {
     if (!user) {
       navigate('/studio/auth')
       return
     }
-    if (isFree) {
+    if (hasAccess) {
       navigate('/studio/library')
       return
     }
@@ -64,9 +82,11 @@ export default function StudioPack() {
     setBuyLoading(false)
   }
 
-  const ctaLabel = isFree
-    ? (user ? 'Go to your library →' : 'Sign up to download →')
-    : `Buy ${pack?.price} →`
+  const ctaLabel = (() => {
+    if (!user) return isFree ? 'Sign up to download →' : `Buy ${pack?.price} →`
+    if (hasAccess) return 'Download →'
+    return `Buy ${pack?.price} →`
+  })()
 
   if (!pack) {
     return (
@@ -130,14 +150,16 @@ export default function StudioPack() {
                 <button className="btn-white" onClick={handleBuy} disabled={buyLoading}>
                   {buyLoading ? 'Loading...' : ctaLabel}
                 </button>
-                {!isFree && (
+                {!isFree && !hasAccess && (
                   <Link to="/pricing" className="btn-secondary" style={{ borderColor: 'rgba(255,255,255,0.3)', color: '#FFFFFF' }}>
                     Or get all packs &rarr;
                   </Link>
                 )}
               </div>
               <p className="text-xs mt-4" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                {isFree ? 'Free forever. Account required so you can re-download anytime.' : '7-day refund guarantee. Email hello@zaheer.studio.'}
+                {hasAccess
+                  ? (isSubscribed ? 'You have All-Access. Download anytime from your library.' : 'You own this pack. Download anytime from your library.')
+                  : (isFree ? 'Free forever. Account required so you can re-download anytime.' : '7-day refund guarantee. Email hello@zaheer.studio.')}
               </p>
             </div>
             <div>
@@ -239,8 +261,8 @@ export default function StudioPack() {
 
       )}
 
-      {/* Pricing options — paid packs only */}
-      {!isFree && (
+      {/* Pricing options — paid packs only, and only if not already owned */}
+      {!isFree && !hasAccess && (
       <section className="px-6 py-20" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="max-w-6xl mx-auto">
           <span className="section-label">Pricing</span>
@@ -318,7 +340,7 @@ export default function StudioPack() {
             <button className="btn-white" onClick={handleBuy} disabled={buyLoading}>
               {buyLoading ? 'Loading...' : ctaLabel}
             </button>
-            {!isFree && (
+            {!isFree && !hasAccess && (
               <Link to="/pricing" className="btn-secondary" style={{ borderColor: 'rgba(255,255,255,0.3)', color: '#FFFFFF' }}>
                 See all plans
               </Link>
