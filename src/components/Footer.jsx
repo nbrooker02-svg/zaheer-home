@@ -35,9 +35,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <Link to="/" className="flex items-center gap-2.5">
-              <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 800, fontSize: '1.05rem', color: 'var(--accent)' }}>
-                Z
-              </span>
+              <img
+                src="/zs-logo.png"
+                alt="Zaheer Studios"
+                style={{ height: '28px', width: 'auto', display: 'block' }}
+              />
               <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: '0.95rem', color: '#EDEFEE' }}>
                 Zaheer Studio
               </span>

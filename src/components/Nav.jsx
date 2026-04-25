@@ -27,17 +27,11 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5">
-          <span
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontWeight: 800,
-              fontSize: '1.1rem',
-              color: 'var(--accent)',
-              letterSpacing: '-0.01em',
-            }}
-          >
-            Z
-          </span>
+          <img
+            src="/zs-logo.png"
+            alt="Zaheer Studios"
+            style={{ height: '32px', width: 'auto', display: 'block' }}
+          />
           <span
             style={{
               fontFamily: "'Montserrat', sans-serif",
