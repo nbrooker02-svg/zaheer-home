@@ -2,7 +2,7 @@ export const packs = [
   {
     id: 'ship-stack',
     name: 'Ship Stack',
-    category: 'Building',
+    category: 'Coding',
     status: 'live',
     tagline: 'From idea to live URL. Your Claude Code agent for building and shipping web apps.',
     description: 'Your Claude Code agent for building and shipping web apps. Type your idea -- it handles the stack, the build, the deploy, and the launch.',

@@ -51,12 +51,15 @@ function FAQItem({ faq }) {
 }
 
 export default function Pricing() {
-  const { user } = useAuth()
+  const { user, subscription } = useAuth()
   const navigate = useNavigate()
   const [loadingPlan, setLoadingPlan] = useState(null)
 
+  const isSubscribed = subscription?.status === 'active'
+
   async function handleSubscribe(plan) {
     if (!user) { navigate('/studio/auth'); return }
+    if (isSubscribed) { navigate('/studio/account'); return }
     setLoadingPlan(plan)
     try {
       const res = await fetch('/api/checkout', {
@@ -92,6 +95,22 @@ export default function Pricing() {
           </p>
         </div>
       </section>
+
+      {isSubscribed && (
+        <div
+          className="px-6 py-4"
+          style={{ background: 'var(--success-soft)', borderBottom: '1px solid rgba(22,101,52,0.15)' }}
+        >
+          <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <p className="text-sm font-semibold" style={{ color: 'var(--success)' }}>
+              ✓ You have Studio All-Access — every pack is unlocked.
+            </p>
+            <a href="/studio/library" className="text-sm font-semibold" style={{ color: 'var(--success)' }}>
+              Go to your library →
+            </a>
+          </div>
+        </div>
+      )}
 
       {/* Pricing cards */}
       <section className="px-6 py-24">
@@ -191,21 +210,41 @@ export default function Pricing() {
                 ))}
               </ul>
               <div className="flex flex-col gap-2 mt-auto">
-                <button
-                  className="btn-white"
-                  onClick={() => handleSubscribe('all-access-monthly')}
-                  disabled={!!loadingPlan}
-                >
-                  {loadingPlan === 'all-access-monthly' ? 'Loading...' : 'Start Monthly →'}
-                </button>
-                <button
-                  className="text-sm font-semibold py-2"
-                  style={{ color: 'rgba(255,255,255,0.75)', background: 'none', border: 'none', cursor: 'pointer' }}
-                  onClick={() => handleSubscribe('all-access-yearly')}
-                  disabled={!!loadingPlan}
-                >
-                  {loadingPlan === 'all-access-yearly' ? 'Loading...' : 'Or pay yearly ($149) →'}
-                </button>
+                {isSubscribed ? (
+                  <>
+                    <div
+                      className="text-center text-sm font-semibold py-3 rounded"
+                      style={{ background: 'rgba(255,255,255,0.15)', color: '#FFFFFF' }}
+                    >
+                      ✓ Active subscription
+                    </div>
+                    <a
+                      href="/studio/account"
+                      className="text-sm font-semibold py-2 text-center"
+                      style={{ color: 'rgba(255,255,255,0.85)' }}
+                    >
+                      Manage in Account →
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="btn-white"
+                      onClick={() => handleSubscribe('all-access-monthly')}
+                      disabled={!!loadingPlan}
+                    >
+                      {loadingPlan === 'all-access-monthly' ? 'Loading...' : 'Start Monthly →'}
+                    </button>
+                    <button
+                      className="text-sm font-semibold py-2"
+                      style={{ color: 'rgba(255,255,255,0.75)', background: 'none', border: 'none', cursor: 'pointer' }}
+                      onClick={() => handleSubscribe('all-access-yearly')}
+                      disabled={!!loadingPlan}
+                    >
+                      {loadingPlan === 'all-access-yearly' ? 'Loading...' : 'Or pay yearly ($149) →'}
+                    </button>
+                  </>
+                )}
               </div>
             </div>
 

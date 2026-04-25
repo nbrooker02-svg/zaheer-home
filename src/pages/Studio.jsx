@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { packs } from '../data/packs'
 
-const categories = ['All', 'Building', 'Marketing', 'Free']
+const categories = ['All', 'Coding', 'Marketing', 'Free']
 
 function PackCard({ pack }) {
   const isLive = pack.status === 'live'
@@ -51,13 +51,14 @@ export default function Studio() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [query, setQuery] = useState('')
 
+  const rank = (p) => p.price === 'Free' ? 0 : (p.status === 'live' ? 1 : 2)
   const filtered = packs
     .filter(p => {
       const matchCat = activeCategory === 'All' || p.category === activeCategory
       const matchQuery = !query || p.name.toLowerCase().includes(query.toLowerCase()) || p.description.toLowerCase().includes(query.toLowerCase())
       return matchCat && matchQuery
     })
-    .sort((a, b) => (a.status === 'live' ? 0 : 1) - (b.status === 'live' ? 0 : 1))
+    .sort((a, b) => rank(a) - rank(b))
 
   return (
     <>

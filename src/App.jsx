@@ -76,9 +76,10 @@ function DarkPackCard({ pack }) {
 }
 
 export default function Home() {
+  const rank = (p) => p.price === 'Free' ? 0 : (p.status === 'live' ? 1 : 2)
   const featuredPacks = packs
     .filter(p => p.featured)
-    .sort((a, b) => (a.status === 'live' ? 0 : 1) - (b.status === 'live' ? 0 : 1))
+    .sort((a, b) => rank(a) - rank(b))
 
   return (
     <>
