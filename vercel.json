@@ -10,6 +10,10 @@
     { "source": "/market-read/:path*", "destination": "https://zaheer-market-read.vercel.app/market-read/:path*" },
     { "source": "/apps/permitpilot", "destination": "https://permitpilot-topaz.vercel.app/apps/permitpilot" },
     { "source": "/apps/permitpilot/:path*", "destination": "https://permitpilot-topaz.vercel.app/apps/permitpilot/:path*" },
+    { "source": "/apps/backbill", "destination": "https://backbill.vercel.app/backbill" },
+    { "source": "/apps/backbill/:path*", "destination": "https://backbill.vercel.app/backbill/:path*" },
+    { "source": "/backbill", "destination": "https://backbill.vercel.app/backbill" },
+    { "source": "/backbill/:path*", "destination": "https://backbill.vercel.app/backbill/:path*" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
