@@ -5,15 +5,195 @@
     <link rel="icon" type="image/png" href="/zs-favicon.png" />
     <link rel="apple-touch-icon" href="/zs-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Zaheer Studio — AI-powered web apps and Claude Code agents for solo founders, freelancers, and one-person operations." />
-    <meta property="og:title" content="Zaheer Studio" />
-    <meta property="og:description" content="The AI toolkit for people who build things solo." />
-    <meta property="og:url" content="https://zaheer.studio" />
+    <meta name="theme-color" content="#AA210F" />
+    <link rel="canonical" href="https://www.zaheer.studio/" />
+
+    <title>Zaheer Studio — AI tools for contractors, subs, investors & small business</title>
+    <meta name="description" content="Zaheer Studio builds focused AI apps for contractors, electrical subs, investors, and small businesses — plus the Claude Code agent packs we use to build them. Affordable. No fifty-seat minimum." />
+    <meta name="keywords" content="AI apps for small business, AI tools for contractors, building permit checklist, voice change orders, AI market analysis, Claude Code agent packs, AI for solo founders, AI tools for freelancers" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Zaheer Studio" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Zaheer Studio" />
+    <meta property="og:title" content="Zaheer Studio — AI tools that fill the gaps" />
+    <meta property="og:description" content="Focused AI apps for contractors, electrical subs, investors, and small businesses. Plus the Claude Code agent packs we use to build them." />
+    <meta property="og:url" content="https://www.zaheer.studio/" />
+    <meta property="og:image" content="https://www.zaheer.studio/zs-logo.png" />
+    <meta property="og:image:alt" content="Zaheer Studio logo" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <title>Zaheer Studio — AI toolkit for solo builders</title>
+    <meta name="twitter:title" content="Zaheer Studio — AI tools that fill the gaps" />
+    <meta name="twitter:description" content="Focused AI apps for contractors, electrical subs, investors, and small businesses. Plus the Claude Code agent packs we use to build them." />
+    <meta name="twitter:image" content="https://www.zaheer.studio/zs-logo.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet" />
+
+    <!-- Structured data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Zaheer Studio",
+      "alternateName": "Zaheer Studios",
+      "url": "https://www.zaheer.studio",
+      "logo": "https://www.zaheer.studio/zs-logo.png",
+      "description": "Zaheer Studio builds focused AI apps for contractors, electrical subs, investors, and small businesses, plus Claude Code agent packs you can install and use yourself.",
+      "email": "info@zaheer.studio",
+      "sameAs": []
+    }
+    </script>
+
+    <!-- Structured data: WebSite + Sitelinks search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Zaheer Studio",
+      "url": "https://www.zaheer.studio",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.zaheer.studio/studio/browse?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Structured data: ItemList of apps -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Zaheer Studio Apps",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "PermitPilot",
+            "description": "Jurisdiction-specific building permit checklists for contractors, GCs, and remodelers. Plain-English checklists of permits, documents, and inspections required before submittal.",
+            "url": "https://www.zaheer.studio/apps/permitpilot",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            },
+            "audience": {
+              "@type": "Audience",
+              "audienceType": "Contractors, general contractors, remodelers, subcontractors"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "BackBill",
+            "description": "Voice-first change order requests for electrical subcontractors. Speak or type the change, get a polished signature-ready COR with one-click approval. Never miss an extra expense.",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "offers": {
+              "@type": "Offer",
+              "price": "29",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/PreOrder"
+            },
+            "audience": {
+              "@type": "Audience",
+              "audienceType": "Electrical subcontractors, small trade crews"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Market Read",
+            "description": "AI-powered weekly market sector analysis. Pick a sector, get performance, key developments, top picks, and what to watch next.",
+            "url": "https://www.zaheer.studio/apps/market-read",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Web",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/PreOrder"
+            },
+            "audience": {
+              "@type": "Audience",
+              "audienceType": "Retail investors, one-person research desks"
+            }
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Zaheer Studio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zaheer Studio is a one-person studio that builds focused AI apps for specific people and small businesses, plus Claude Code agent packs you can install and use yourself. Every app solves one specific problem really well — instead of being a bloated, $300-a-month tool built for fifty-person teams."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who are these AI tools for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contractors, electrical subcontractors, retail investors, solo founders, freelancers, and small businesses who don't have a budget for enterprise SaaS."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the apps free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PermitPilot is free to try. BackBill will be $29/month with a 14-day free trial when it launches. Market Read pricing is TBD. Every price is on the page — no contact-sales."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I build my own AI tools with Zaheer Studio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Studio sells Claude Code agent packs — the same ones used to build every app on this site. The Free AI Agent Starter Kit needs no credit card. Ship Stack is $49 one-time. Studio All-Access is $19/month or $149/year for every current and future pack."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Claude Code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Claude Code is Anthropic's official AI coding agent that runs in your terminal. It's free to download and runs with a Claude Pro subscription. Zaheer Studio packs are configuration layers that give Claude Code a permanent memory of your stack, your goals, and your workflow."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does Zaheer Studio run?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The web apps run on zaheer.studio. The agent packs run locally on your machine inside Claude Code — your data stays on your laptop. Auth via Supabase or Clerk depending on the app. Payments via Stripe."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
