@@ -52,99 +52,39 @@ function Shell({ title, children }) {
 }
 
 function PermitPilotMockup() {
-  const items = [
-    { label: 'Building permit', done: true },
-    { label: 'Electrical permit', done: true },
-    { label: 'Plumbing permit', done: true },
-    { label: 'Mechanical permit', done: true },
-    { label: 'Setback variance', done: false },
-    { label: 'Final inspection', done: false },
-  ]
   return (
-    <Shell title="permitpilot · charleston, sc">
+    <div
+      style={{
+        background: '#2A2926',
+        borderRadius: 10,
+        overflow: 'hidden',
+        border: '1px solid rgba(255,255,255,0.08)',
+        boxShadow: '0 24px 64px rgba(65, 64, 60, 0.35)',
+        width: '100%',
+        maxWidth: 540,
+      }}
+    >
+      <WindowChrome title="permitpilot · austin, tx" />
       <div
         style={{
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '0.72rem',
-          color: 'rgba(237,239,238,0.5)',
-          textTransform: 'uppercase',
-          letterSpacing: '0.08em',
-          marginBottom: 6,
+          padding: 14,
+          background: 'linear-gradient(180deg, #2A2926 0%, #1E1C1A 100%)',
         }}
       >
-        Project · Single-family ADU
+        <img
+          src="/permitpilot-checklist.png"
+          alt="PermitPilot — real lookup result for an Austin, TX roofing permit, showing a checklist of documents required before submittal"
+          loading="lazy"
+          style={{
+            display: 'block',
+            width: '100%',
+            height: 'auto',
+            borderRadius: 4,
+            boxShadow: '0 8px 24px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06)',
+          }}
+        />
       </div>
-      <div
-        style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontSize: '1rem',
-          color: '#EDEFEE',
-          fontWeight: 700,
-          marginBottom: 16,
-        }}
-      >
-        Permit checklist
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {items.map((item, i) => (
-          <div
-            key={i}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 10,
-              padding: '8px 10px',
-              background: 'rgba(255,255,255,0.04)',
-              borderRadius: 6,
-              border: '1px solid rgba(255,255,255,0.06)',
-            }}
-          >
-            <span
-              style={{
-                width: 16,
-                height: 16,
-                borderRadius: 4,
-                background: item.done ? '#56C57A' : 'transparent',
-                border: item.done ? 'none' : '1.5px solid rgba(237,239,238,0.3)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                fontSize: '0.7rem',
-                color: '#1E1C1A',
-                fontWeight: 700,
-              }}
-            >
-              {item.done ? '✓' : ''}
-            </span>
-            <span
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '0.82rem',
-                color: item.done ? 'rgba(237,239,238,0.85)' : 'rgba(237,239,238,0.55)',
-              }}
-            >
-              {item.label}
-            </span>
-          </div>
-        ))}
-      </div>
-      <div
-        style={{
-          marginTop: 16,
-          padding: '10px 12px',
-          background: 'rgba(86,197,122,0.12)',
-          border: '1px solid rgba(86,197,122,0.25)',
-          borderRadius: 6,
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '0.78rem',
-          color: '#56C57A',
-          fontWeight: 600,
-        }}
-      >
-        ✓ Ready to submit · 4 of 6 docs complete
-      </div>
-    </Shell>
+    </div>
   )
 }
 
