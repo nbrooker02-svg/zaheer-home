@@ -1,4 +1,10 @@
 {
+  "redirects": [
+    { "source": "/apps/backbill", "destination": "/trades/backbill", "permanent": true },
+    { "source": "/apps/backbill/:path*", "destination": "/trades/backbill/:path*", "permanent": true },
+    { "source": "/apps/permitpilot", "destination": "/trades/permitpilot", "permanent": true },
+    { "source": "/apps/permitpilot/:path*", "destination": "/trades/permitpilot/:path*", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/api/rewrite", "destination": "https://resume-rewriter-snowy.vercel.app/api/rewrite" },
     { "source": "/api/analyze", "destination": "https://zaheer-market-read.vercel.app/api/analyze" },
@@ -8,10 +14,10 @@
     { "source": "/apps/market-read", "destination": "https://zaheer-market-read.vercel.app/market-read" },
     { "source": "/apps/market-read/:path*", "destination": "https://zaheer-market-read.vercel.app/market-read/:path*" },
     { "source": "/market-read/:path*", "destination": "https://zaheer-market-read.vercel.app/market-read/:path*" },
-    { "source": "/apps/permitpilot", "destination": "https://permitpilot-topaz.vercel.app/apps/permitpilot" },
-    { "source": "/apps/permitpilot/:path*", "destination": "https://permitpilot-topaz.vercel.app/apps/permitpilot/:path*" },
-    { "source": "/apps/backbill", "destination": "https://backbill.vercel.app/apps/backbill" },
-    { "source": "/apps/backbill/:path*", "destination": "https://backbill.vercel.app/apps/backbill/:path*" },
+    { "source": "/trades/permitpilot", "destination": "https://permitpilot-topaz.vercel.app/trades/permitpilot" },
+    { "source": "/trades/permitpilot/:path*", "destination": "https://permitpilot-topaz.vercel.app/trades/permitpilot/:path*" },
+    { "source": "/trades/backbill", "destination": "https://backbill.vercel.app/trades/backbill" },
+    { "source": "/trades/backbill/:path*", "destination": "https://backbill.vercel.app/trades/backbill/:path*" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }

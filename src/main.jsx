@@ -18,12 +18,18 @@ import Account from './pages/studio/Account'
 import Terms from './pages/legal/Terms'
 import Privacy from './pages/legal/Privacy'
 import Refunds from './pages/legal/Refunds'
+import VerticalHub from './pages/vertical/VerticalHub'
+import { trades } from './data/verticals/trades'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
         <Routes>
+          {/* Verticals — render their own layout, no zaheer.studio main nav/footer */}
+          <Route path="/trades" element={<VerticalHub config={trades} />} />
+
+          {/* Main zaheer.studio site */}
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/apps" element={<Apps />} />

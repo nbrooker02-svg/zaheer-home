@@ -1,0 +1,42 @@
+# Zaheer Studio Trades
+
+> A vertical of focused, jobsite-grade software tools for general contractors, electrical subcontractors, mechanical and plumbing subs, remodelers, and specialty trades. Hub: https://www.zaheer.studio/trades
+
+## Who it serves
+
+- General contractors (GCs)
+- Electrical subcontractors
+- Mechanical and HVAC subcontractors
+- Plumbing subcontractors
+- Remodelers
+- Specialty trades and small crews
+
+## Tools in the vertical
+
+### PermitPilot — https://www.zaheer.studio/trades/permitpilot
+
+Jurisdiction-specific building permit checklists for contractors, GCs, and remodelers. Pick a city, pick a project type, get a plain-English checklist of every permit, document, and inspection required before submittal. 49+ US jurisdictions, expanding weekly. Free to try. Status: live.
+
+### BackBill — https://www.zaheer.studio/trades/backbill
+
+Voice-first Change Order Request software for electrical and specialty subcontractors. Capture jobsite extras with a 30-second voice memo; AI drafts a polished, line-itemized COR; PDF is emailed to the GC with a one-click approval link. $29/month, 14-day free trial. Status: in development (Phase 1 deployed).
+
+## Why this vertical exists
+
+Most software for the trades is built for fifty-person enterprise general contractors with budgets to match. Zaheer Studio Trades exists to give the smaller operators — the ones working in the truck, on the jobsite, with one or two crews — software that fits how they actually work. Mobile-first. Jobsite-tested. Priced like a tool, not a license.
+
+## Common questions
+
+**Who is Zaheer Studio Trades for?**
+Contractors, subcontractors, remodelers, and specialty trade businesses who don't have an enterprise budget and need software designed for the field.
+
+**What does it cost?**
+PermitPilot is free to try. BackBill is $29/month with a 14-day free trial — no credit card to start.
+
+**How do I request a feature or a city?**
+Email info@zaheer.studio. New jurisdictions for PermitPilot ship on request. Feature requests for BackBill go straight to the roadmap.
+
+## Contact
+
+- Support email: info@zaheer.studio
+- Vertical hub: https://www.zaheer.studio/trades

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Authenticated app surfaces — index marketing only
+Disallow: /studio/library
+Disallow: /studio/account
+
+# Trades vertical — fully indexable
+Allow: /trades
+Allow: /trades/
+
+Sitemap: https://www.zaheer.studio/sitemap.xml
