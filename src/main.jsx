@@ -19,6 +19,8 @@ import Terms from './pages/legal/Terms'
 import Privacy from './pages/legal/Privacy'
 import Refunds from './pages/legal/Refunds'
 import VerticalHub from './pages/vertical/VerticalHub'
+import TradesTerms from './pages/vertical/trades/TradesTerms'
+import TradesPrivacy from './pages/vertical/trades/TradesPrivacy'
 import { trades } from './data/verticals/trades'
 
 createRoot(document.getElementById('root')).render(
@@ -28,6 +30,8 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           {/* Verticals — render their own layout, no zaheer.studio main nav/footer */}
           <Route path="/trades" element={<VerticalHub config={trades} />} />
+          <Route path="/trades/terms" element={<TradesTerms />} />
+          <Route path="/trades/privacy" element={<TradesPrivacy />} />
 
           {/* Main zaheer.studio site */}
           <Route element={<Layout />}>

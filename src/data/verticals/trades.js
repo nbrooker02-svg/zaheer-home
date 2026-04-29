@@ -26,8 +26,8 @@ export const trades = {
 
   hero: {
     eyebrow: 'Zaheer Studio Trades',
-    h1: 'Software built for the trades.',
-    sub: 'Focused, no-fluff tools for contractors, electrical subs, mechanical subs, and specialty trades. The kind of software you wish someone built for the work you actually do.',
+    h1: 'AI tools designed for the trades.',
+    sub: 'Focused tools that streamline the work you actually do — permits, change orders, and the bleed-points that cost trades businesses real money. No fluff. No enterprise pricing. Just tools that pay for themselves.',
     primaryCta: { label: 'See the tools', href: '#tools' },
     secondaryCta: { label: 'Get in touch', href: '#contact' },
   },
@@ -77,7 +77,7 @@ export const trades = {
       status: 'development',
       href: '/trades/backbill',
       cta: 'Preview BackBill',
-      pricing: '$29/mo · 14-day free trial',
+      pricing: '$29/mo',
       schema: {
         applicationCategory: 'BusinessApplication',
         offers: { price: '29', priceCurrency: 'USD', availability: 'https://schema.org/PreOrder' },
@@ -88,19 +88,19 @@ export const trades = {
 
   trust: {
     eyebrow: 'Built for the work',
-    h2: 'Why Zaheer Studio Trades exists. [PLACEHOLDER COPY]',
+    h2: 'Why Zaheer Studio Trades exists.',
     points: [
       {
-        title: 'Built by people who know the trades',
-        body: 'Every tool is shaped by real contractors and subs. Tested on real jobsites before it ever ships. [PLACEHOLDER]',
+        title: 'Trades keep the country running',
+        body: 'Plumbing, electrical, framing, HVAC, roofing — the work everything else depends on. We build software for the people who actually do it, because most of the industry has been ignored by software for decades.',
       },
       {
         title: 'Priced like a tool, not a license',
-        body: 'No fifty-seat minimums. No "contact sales." Just clear monthly pricing or one-time costs you can put on a job. [PLACEHOLDER]',
+        body: 'No fifty-seat minimums. No "contact sales." Clear monthly pricing or one-time costs you can put on a job and stop thinking about.',
       },
       {
-        title: 'Made for the field, not the office',
-        body: 'Voice-first capture, mobile-first UI, and offline-friendly where it matters. Built for the truck, the jobsite, and the back office. [PLACEHOLDER]',
+        title: 'Built around where trades bleed money',
+        body: 'Permits that take half a day to research. Change orders that never get written up. The small inefficiencies that quietly eat thousands a year. Each tool we build goes after one of those bleed-points specifically.',
       },
     ],
   },
@@ -129,8 +129,8 @@ export const trades = {
   ],
 
   contact: {
-    h2: 'Got a feature request? An odd jurisdiction? An idea?',
-    body: 'Email goes straight to a real person — not a ticket queue.',
+    h2: 'Got a part of your business that\'s costing you time or money?',
+    body: 'Permit research. Change orders. Scheduling. Invoicing. Whatever\'s eating into your week — tell us about it, and we\'ll see if it\'s worth building a tool for. Email goes straight to a real person, not a ticket queue.',
     email: 'info@zaheer.studio',
     primaryCta: { label: 'Email info@zaheer.studio', href: 'mailto:info@zaheer.studio' },
   },
