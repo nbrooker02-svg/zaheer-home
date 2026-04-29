@@ -57,6 +57,11 @@ export const trades = {
       href: '/trades/permitpilot',
       cta: 'Open PermitPilot',
       pricing: 'Free to try',
+      preview: {
+        image: '/trades/permitpilot-trades-preview.png',
+        alt: 'PermitPilot — real lookup result for an Austin, TX roofing permit, showing required documents, fees, and submission options',
+        chrome: 'permitpilot · austin, tx',
+      },
       schema: {
         applicationCategory: 'BusinessApplication',
         offers: { price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
@@ -78,6 +83,11 @@ export const trades = {
       href: '/trades/backbill',
       cta: 'Preview BackBill',
       pricing: '$29/mo',
+      preview: {
+        image: '/trades/backbill-change-order-preview.png',
+        alt: 'BackBill — new change order capture screen with voice recording, transcribed scope, attached photo, and Process change order button',
+        chrome: 'backbill · new change order',
+      },
       schema: {
         applicationCategory: 'BusinessApplication',
         offers: { price: '29', priceCurrency: 'USD', availability: 'https://schema.org/PreOrder' },

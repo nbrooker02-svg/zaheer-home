@@ -2,6 +2,7 @@ import VerticalLayout from '../../components/vertical/VerticalLayout'
 import VerticalSEO from '../../components/vertical/VerticalSEO'
 import VerticalHero from '../../components/vertical/VerticalHero'
 import VerticalProductCard from '../../components/vertical/VerticalProductCard'
+import VerticalProductPreview from '../../components/vertical/VerticalProductPreview'
 import VerticalTrust from '../../components/vertical/VerticalTrust'
 import VerticalFAQ from '../../components/vertical/VerticalFAQ'
 import VerticalContact from '../../components/vertical/VerticalContact'
@@ -148,23 +149,7 @@ export default function VerticalHub({ config }) {
                   product={product}
                   reverse={i % 2 === 1}
                   visual={
-                    <div
-                      style={{
-                        width: '100%',
-                        maxWidth: 520,
-                        aspectRatio: '4 / 3',
-                        borderRadius: 10,
-                        background: 'linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-surface) 100%)',
-                        border: '1px solid var(--border)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'var(--text-tertiary)',
-                        fontSize: '0.85rem',
-                      }}
-                    >
-                      [ {product.name} preview — placeholder ]
-                    </div>
+                    <VerticalProductPreview preview={product.preview} fallbackName={product.name} />
                   }
                 />
               </div>
