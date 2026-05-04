@@ -43,6 +43,32 @@ export const trades = {
 
   products: [
     {
+      id: 'backbill',
+      name: 'BackBill',
+      tagline: 'Never miss an extra expense again.',
+      description: 'Voice-first change order requests for electrical and specialty subs. Talk through a job-site change, get a polished, signature-ready COR in under a minute — and a one-click approval link your GC actually uses.',
+      bullets: [
+        'Speak or type change orders — update pricing, labor, and materials in seconds',
+        'Polished COR PDFs auto-sent for approval, with full line items and totals',
+        'One-click sign-off — track what\'s sent, signed, and paid',
+      ],
+      audience: 'Built for electrical subcontractors and small trade crews',
+      status: 'live',
+      href: '/trades/backbill',
+      cta: 'Open BackBill',
+      pricing: '$29/mo',
+      preview: {
+        image: '/trades/backbill-change-order-preview.png',
+        alt: 'BackBill — new change order capture screen with voice recording, transcribed scope, attached photo, and Process change order button',
+        chrome: 'backbill · new change order',
+      },
+      schema: {
+        applicationCategory: 'BusinessApplication',
+        offers: { price: '29', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+        audience: 'Electrical subcontractors, mechanical subcontractors, specialty trade contractors',
+      },
+    },
+    {
       id: 'permitpilot',
       name: 'PermitPilot',
       tagline: 'Stop guessing what permits you need.',
@@ -66,32 +92,6 @@ export const trades = {
         applicationCategory: 'BusinessApplication',
         offers: { price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
         audience: 'Contractors, general contractors, remodelers, subcontractors',
-      },
-    },
-    {
-      id: 'backbill',
-      name: 'BackBill',
-      tagline: 'Never miss an extra expense again.',
-      description: 'Voice-first change order requests for electrical and specialty subs. Talk through a job-site change, get a polished, signature-ready COR in under a minute — and a one-click approval link your GC actually uses.',
-      bullets: [
-        'Speak or type change orders — update pricing, labor, and materials in seconds',
-        'Polished COR PDFs auto-sent for approval, with full line items and totals',
-        'One-click sign-off — track what\'s sent, signed, and paid',
-      ],
-      audience: 'Built for electrical subcontractors and small trade crews',
-      status: 'development',
-      href: '/trades/backbill',
-      cta: 'Preview BackBill',
-      pricing: '$29/mo',
-      preview: {
-        image: '/trades/backbill-change-order-preview.png',
-        alt: 'BackBill — new change order capture screen with voice recording, transcribed scope, attached photo, and Process change order button',
-        chrome: 'backbill · new change order',
-      },
-      schema: {
-        applicationCategory: 'BusinessApplication',
-        offers: { price: '29', priceCurrency: 'USD', availability: 'https://schema.org/PreOrder' },
-        audience: 'Electrical subcontractors, mechanical subcontractors, specialty trade contractors',
       },
     },
   ],
@@ -122,7 +122,7 @@ export const trades = {
     },
     {
       q: 'What tools are in Zaheer Studio Trades right now?',
-      a: 'Two: PermitPilot (jurisdiction-specific permit research and checklists for contractors) and BackBill (voice-to-COR change order software for electrical and specialty subs).',
+      a: 'Two: BackBill (voice-to-COR change order software for electrical and specialty subs) and PermitPilot (jurisdiction-specific permit research and checklists for contractors).',
     },
     {
       q: 'Are these tools free?',
@@ -150,8 +150,8 @@ export const trades = {
       {
         title: 'Tools',
         links: [
-          { label: 'PermitPilot', href: '/trades/permitpilot' },
           { label: 'BackBill', href: '/trades/backbill' },
+          { label: 'PermitPilot', href: '/trades/permitpilot' },
         ],
       },
       {
