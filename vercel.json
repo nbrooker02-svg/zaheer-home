@@ -1,5 +1,10 @@
 {
   "redirects": [
+    {
+      "source": "/",
+      "destination": "https://roofing.byzaheer.com/landing",
+      "permanent": false
+    },
     { "source": "/apps/backbill", "destination": "/trades/backbill", "permanent": true },
     { "source": "/apps/backbill/:path*", "destination": "/trades/backbill/:path*", "permanent": true },
     { "source": "/apps/permitpilot", "destination": "/trades/permitpilot", "permanent": true },
